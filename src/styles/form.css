@@ -1,5 +1,11 @@
 #nameEntry{
-    position: absolute;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+#emailEntry{
+    position: relative;
     top: 50px;
     left: 50px;
 }
@@ -9,7 +15,7 @@
 }
 
 .button{
-    position: absolute;
+    position: relative;
     top: 150px;
     left: 250px;
 }
