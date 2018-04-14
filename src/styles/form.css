@@ -10,11 +10,17 @@
     left: 50px;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
 .textfield{
     margin: 10px;
 }
 
-.button{
+#submit{
     position: relative;
     top: 150px;
     left: 250px;

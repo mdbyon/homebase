@@ -1,4 +1,7 @@
-it('renders without crashing', () => {
-    
 
-});
+
+describe('WelcomeForm', ()=>{
+    it('should render a div', ()=>{
+        
+    })
+})

@@ -1,18 +1,36 @@
 import React, {Component} from 'react';
 import {TextField, RaisedButton} from 'material-ui';
 import { MuiThemeProvider } from 'material-ui/styles';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import PropTypes from 'prop-types';
-
+import Paper from 'material-ui/Paper'
+import { Redirect } from 'react-router-dom'
 
 class RegisterForm extends Component{
+
     constructor(props){
         super(props);
+        this.state = {
+            redirect: false
+        };
+      }  
+
+    setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
     }
 
     render() {
 
     return(
-        <MuiThemeProvider>
+        this.state.redirect
+        ? <Redirect to = '/home'/>   
+    : <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <div>
+        <Paper zDepth={5}>
+        <div className = 'container'>
             <div id = 'nameEntry'>
             <TextField
             className = 'textfield'
@@ -32,11 +50,18 @@ class RegisterForm extends Component{
             onChange = {this.props.handleEmail}
             />
             </div>
+            <div id = 'submit'>
             <RaisedButton 
             className = "button"
-            label="Submit" 
-            primary = {true}/>
-        </MuiThemeProvider>
+            label= "Register" 
+            primary = {true}
+            onClick = {this.setRedirect}
+            />
+            </div>
+        </div>
+        </Paper>
+        </div>
+    </MuiThemeProvider>
         );
     }
 
