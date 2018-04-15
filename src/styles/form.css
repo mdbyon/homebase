@@ -23,5 +23,17 @@
 #submit{
     position: relative;
     top: 150px;
+    left: 270px;
+}
+
+#login{
+    position: relative;
+    top: 178px;
+    left: 277px;
+
+}
+
+#homePaper{
+    position: absolute;
     left: 250px;
 }

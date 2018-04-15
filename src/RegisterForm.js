@@ -49,11 +49,23 @@ class RegisterForm extends Component{
             hintText="Email Address"
             onChange = {this.props.handleEmail}
             />
+            <TextField
+            className = 'textfield'
+            hintText="Create Password"
+            />
             </div>
             <div id = 'submit'>
             <RaisedButton 
             className = "button"
             label= "Register" 
+            primary = {true}
+            onClick = {this.setRedirect}
+            />
+            </div>
+            <div id = 'login'>
+            <RaisedButton 
+            className = "button"
+            label= "Login" 
             primary = {true}
             onClick = {this.setRedirect}
             />

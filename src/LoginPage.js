@@ -7,7 +7,7 @@ import {TitleBar} from 'react-desktop/windows';
 import './styles/form.css';
 import RegisterForm from './RegisterForm.js';
 
-class WelcomePage extends Component {
+class LoginPage extends Component {
 
   static defaultProps = {
     color: '#1A237E',
@@ -25,13 +25,13 @@ class WelcomePage extends Component {
   }
   
   handleChange = (event, entry) => {
-    if(entry === 'firstname'){
+    if(entry == 'firstname'){
       this.setState({firstname: event.target.value});
     }
-    if(entry === 'lastname'){
+    if(entry == 'lastname'){
       this.setState({lastname: event.target.value});
     }
-    if(entry === 'email'){
+    if(entry == 'email'){
       this.setState({email: event.target.value});
     }
   }
@@ -41,18 +41,16 @@ class WelcomePage extends Component {
     return (
       
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <div>
+        <div id = 'WelcomeWrapper'>
           <TitleBar
           title="Community Service Tracker"
-          controls
-          isMaximized={this.state.isMaximized}
           theme={this.props.theme}
           background={this.props.color}
           />
           <RegisterForm 
-          handleFirstName = {this.handleChange('firstname')}
-          handleLastName = {this.handleChange('lastname')}
-          handleEmail = {this.handleChange('email')}
+          handleFirstName = {(e) => this.handleChange(e, 'firstname')}
+          handleLastName = {(e) => this.handleChange(e, 'lastname')}
+          handleEmail = {(e) => this.handleChange(e, 'email')}
           />
   
         </div>
@@ -63,9 +61,9 @@ class WelcomePage extends Component {
   }
 } 
 
-export default WelcomePage;
+export default LoginPage;
 
-WelcomePage.propTypes = {
+LoginPage.propTypes = {
   color: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired
 };
