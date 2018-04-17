@@ -6,6 +6,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {TitleBar} from 'react-desktop/windows';
 import Paper from 'material-ui/Paper'
+import ProfileForm from './ProfileForm';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import {
   Table,
@@ -31,16 +32,19 @@ class HomePage extends Component {
     this.state = {
         open: true,
         onSettings: false,
-        onServiceHistory: false
+        onServiceHistory: false,
+        showProfileForm: false,
     };
   }
   
   handleDrawerItemClick = (e, item) => {
     if(item == 'MyCommunityService'){
-      this.setState({onServiceHistory: true});
+      this.setState({onServiceHistory: true,
+                    showProfileForm: false});
     }
     if(item == 'Profile'){
-      this.setState({onServiceHistory: false});
+      this.setState({onServiceHistory: false,
+                    showProfileForm: true});
     }
     if(item == 'Settings'){
       this.setState({onServiceHistory: false});
@@ -85,7 +89,10 @@ class HomePage extends Component {
       </TableRow>
     </TableBody>
   </Table> : <div></div>
-  
+
+  var profileForm = this.state.showProfileForm ? <ProfileForm />
+  : <div></div>
+
     return (
     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <div>
@@ -102,6 +109,7 @@ class HomePage extends Component {
         </Drawer>
         <Paper id = 'homePaper'>
         {table}
+        {profileForm}
       </Paper>
       </div>
     </MuiThemeProvider>
