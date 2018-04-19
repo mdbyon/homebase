@@ -82,7 +82,7 @@ let ProfileForm = props => {
   }
 
  ProfileForm = reduxForm({
-    form: 'ProfileForm'
+    profileForm: 'ProfileForm'
   })(ProfileForm)
 
   export default ProfileForm

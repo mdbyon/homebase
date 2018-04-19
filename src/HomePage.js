@@ -8,6 +8,8 @@ import {TitleBar} from 'react-desktop/windows';
 import Paper from 'material-ui/Paper'
 import ProfileForm from './ProfileForm';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import { Provider } from 'react-redux';
+import configureStore from './store';
 import {
   Table,
   TableBody,
@@ -18,6 +20,8 @@ import {
 } from 'material-ui/Table';
 
 import './styles/form.css';
+
+const store = configureStore();
 
 
 class HomePage extends Component {
@@ -90,7 +94,10 @@ class HomePage extends Component {
     </TableBody>
   </Table> : <div></div>
 
-  var profileForm = this.state.showProfileForm ? <ProfileForm />
+  var profileForm = this.state.showProfileForm ? 
+  <Provider store = {store}>
+  <ProfileForm />
+  </Provider>
   : <div></div>
 
     return (
@@ -108,8 +115,12 @@ class HomePage extends Component {
           >Settings</MenuItem>
         </Drawer>
         <Paper id = 'homePaper'>
-        {table}
-        {profileForm}
+        <div id = 'myCommunityServiceTable'>
+          {table}
+        </div>
+        <div id = 'profileForm'>
+          {profileForm}
+        </div>
       </Paper>
       </div>
     </MuiThemeProvider>

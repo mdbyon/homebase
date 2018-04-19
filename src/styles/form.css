@@ -34,6 +34,13 @@
 }
 
 #homePaper{
-    position: absolute;
+    position: relative;
     left: 250px;
+}
+
+#profileForm{
+    position: relative;
+    top: 33px;
+    left: 313px;
+    height: 999px;
 }
