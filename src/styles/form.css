@@ -44,3 +44,29 @@
     left: 313px;
     height: 999px;
 }
+
+.formEntry{
+    padding: 10px;
+}
+
+.fieldEntry{
+    padding-top: 10px;
+}
+
+.radioButton{
+    padding-top: 10px;
+}
+
+.checkBox {
+    padding-top: 7px;
+    padding-bottom: 16px;
+}
+
+.comments{
+    padding-top:15px;
+}
+
+.profileButton {
+    margin-left: 91px;
+    margin-top: 31px;
+}
