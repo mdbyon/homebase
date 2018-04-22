@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 export default function createReducer(extraReducerObjects = {}) {  
   return combineReducers({
-    profileForm: formReducer,
+    form: formReducer,
     ...extraReducerObjects
   });
 }

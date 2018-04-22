@@ -5,28 +5,18 @@ import Checkbox from 'material-ui/Checkbox';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import SelectField from 'material-ui/SelectField';
 import Label from 'react-desktop/windows';
-import {Field,  reduxForm} from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import './styles/form.css';
 
-const TextArea = 
-<TextField 
-    hintText="Insert Comments"
-    multiLine={true}
-    rows={2}
-    rowsMax={5}/>
-
-let ProfileForm = props => {
+const ProfileForm = props => {
     const { handleSubmit, pristine, reset, submitting } = props
     return (
       <form onSubmit={handleSubmit}>
         <div className = 'formEntry'>
           <label>Age</label>
           <div className = 'fieldEntry'>
-            <Field
-              name="age"                                
-              component={TextField}
-              type="text"
+            <TextField
+              className="age"                                
               placeholder="Enter Age"
             />
           </div>
@@ -34,38 +24,37 @@ let ProfileForm = props => {
         <div className = 'formEntry'>
           <label>Sex</label>
           <div className = 'fieldEntry'>
-            <Field name="sex" component={RadioButtonGroup}>
+            <RadioButtonGroup >
                 <RadioButton className = 'radioButton' value="male" label="Male"/>
                 <RadioButton className = 'radioButton' value="female" label="Female"/>
-            </Field>
-          </div>
+            </RadioButtonGroup>
+            </div>
         </div>
         <div className = 'formEntry'>
           <label>Looking for</label>
           <div className = 'fieldEntry'>
-            <Field name="lookingFor" component={SelectField}>
+            <SelectField>
               <option value=""></option>
               <option value="Part-Time">Part-Time</option>
               <option value="Full-Time">Full-Time</option>
-            </Field>
+            </SelectField>
           </div>
         </div>
         <div className = 'formEntry'>
           <label htmlFor="showAll">Show All Community Service Listings</label>
           <div className = 'fieldEntry'>
-            <Field
+            <Checkbox
               className = 'checkBox'
               name="showAll"
-              id="showAll"
-              component={Checkbox}
-              type="checkbox"
             />
           </div>
         </div>
         <div className = 'formEntry'>
           <label>Comments</label>
           <div className = 'fieldEntry'>
-            <Field className = 'comments' name="comments" component={TextField} label="Notes" multiLine={true} rows={2}/>
+            <TextField className = 'comments' 
+             label="Notes" multiLine={true} rows={2}
+             placeholder="What makes you interested in community service?"/>
           </div>
         </div>
         <div>
@@ -74,10 +63,6 @@ let ProfileForm = props => {
       </form>
     )
   }
-
- ProfileForm = reduxForm({
-    profileForm: 'ProfileForm'
-  })(ProfileForm)
 
   export default ProfileForm
 
