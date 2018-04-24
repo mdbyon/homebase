@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';  
-import { reducer as formReducer } from 'redux-form';
+import { combineReducers } from 'redux'; 
+import profileReducer from './profileFormReducer';
 
-export default function createReducer(extraReducerObjects = {}) {  
-  return combineReducers({
-    form: formReducer,
-    ...extraReducerObjects
+const communityServiceAppReducer =  combineReducers({
+    profileForm: profileReducer
   });
-}
+
+  export default communityServiceAppReducer

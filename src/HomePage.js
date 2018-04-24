@@ -6,16 +6,17 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {TitleBar} from 'react-desktop/windows';
 import Paper from 'material-ui/Paper'
+import configureStore from './store';
 import ProfileFormContainer from './containers/ProfileFormContainer';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import { Provider } from 'react-redux';
-import configureStore from './store';
 import PersonsTable from './PersonsTable';
 
 import './styles/form.css';
 
 
 const store = configureStore();
+
 
 
 class HomePage extends Component {
@@ -55,7 +56,7 @@ class HomePage extends Component {
 
   var profileForm = this.state.showProfileForm ? 
   <Provider store = {store}>
-  <ProfileFormContainer />
+    <ProfileFormContainer />
   </Provider>
   : <div></div>
 
