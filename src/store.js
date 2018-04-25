@@ -9,9 +9,22 @@ const composeEnhancers =
 
 export function configureStore() {  
   const middlewares = [];
+  const initialState =  {     
+    profileForm: [    
+      {
+        age: "11", 
+        sex: "Male"
+      },
+      {
+        age: "15",
+        sex: "Female"
+      }
+    ]
+  }
+
   const store = createStore(
     communityServiceAppReducer,
-    {},
+    initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
   return store;

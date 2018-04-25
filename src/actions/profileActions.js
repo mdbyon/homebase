@@ -1,15 +1,14 @@
-let profileActions = {
-    addUser : function(user) {
+
+   export const addUser = (user) => {
       return {
         type: 'ADD_USER',
         payload: user,
       }
-    },
-    deleteUser: function(user) {
+    }
+
+   export const deleteUser = (user) => {
       return {
         type: 'DELETE_TODO',
         payload: user
        }
     }
-  }
-  export default profileActions

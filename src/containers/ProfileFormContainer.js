@@ -1,16 +1,16 @@
 import React from 'react';  
 import { reduxForm } from 'redux-form';
 import {connect} from 'react-redux'
-import profileActions from '../actions/profileActions'
+import { addUser } from '../actions/profileActions'
 import ProfileForm from '../ProfileForm';
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (user) => {
-            dispatch(profileActions.addUser(user))
+            dispatch(addUser(user))
         }
-      }
+      } 
     }
 
 

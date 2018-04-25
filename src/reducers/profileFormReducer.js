@@ -1,8 +1,7 @@
- const profileReducer = (state = {users:[]}, action) => {
+ const profileReducer = (state = [], action) => {
     switch(action.type){
       case "ADD_USER":
-        return 
-            [...state, 
+        return [...state, 
               { 
                 age: action.payload.age,
                 sex: action.payload.sex,
@@ -14,7 +13,7 @@
           return { updatedUsers }
       default:
         return state;
-    }
+      }
   }
 
   export default profileReducer

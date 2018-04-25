@@ -7,7 +7,7 @@ import  PersonsTable  from '../PersonsTable';
 
 function mapStateToProps(state) {
     return {
-        users: state.profileForm.users
+        users: state.profileForm
     }
   }
   

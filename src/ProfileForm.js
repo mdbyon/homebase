@@ -24,7 +24,7 @@ class ProfileForm extends Component {
 
     render(){
         return (
-        <form onSubmit={this.props.onSubmit}>
+        <form onSubmit={this.props.onSubmit(this.state)}>
             <div className = 'formEntry'>
             <label>Age</label>
             <div className = 'fieldEntry'>
