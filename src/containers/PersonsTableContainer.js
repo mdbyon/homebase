@@ -3,14 +3,14 @@ import { reduxForm } from 'redux-form';
 import {connect} from 'react-redux'
 import profileActions from '../actions/profileActions'
 import ProfileForm from '../ProfileForm';
-import UserList from '../UserList';
+import  PersonsTable  from '../PersonsTable';
 
 function mapStateToProps(state) {
     return {
-        users: state.users
+        users: state.profileForm.users
     }
   }
   
 
-let UserListContainer = connect(mapStateToProps, null)(UserList)
-export default UserListContainer
+let PersonsTableContainer = connect(mapStateToProps, null)(PersonsTable)
+export default PersonsTableContainer

@@ -10,47 +10,47 @@ import {
     TableRowColumn,
   } from 'material-ui/Table';
 
-export const PersonsTable = props => {
+class PersonsTable extends Component{
     
-    return (
-        <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderColumn>ID</TableHeaderColumn>
-            <TableHeaderColumn>Name</TableHeaderColumn>
-            <TableHeaderColumn>Status</TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableRowColumn>1</TableRowColumn>
-            <TableRowColumn>John Smith</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>2</TableRowColumn>
-            <TableRowColumn>Randal White</TableRowColumn>
-            <TableRowColumn>Unemployed</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>3</TableRowColumn>
-            <TableRowColumn>Stephanie Sanders</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>4</TableRowColumn>
-            <TableRowColumn>Steve Brown</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn>5</TableRowColumn>
-            <TableRowColumn>Christopher Nolan</TableRowColumn>
-            <TableRowColumn>Unemployed</TableRowColumn>
-          </TableRow>
-        </TableBody>
-      </Table> 
-    );
-  }
+    constructor(props){
+        super(props);
+        this.state = {
+            open: true,
+            onSettings: false,
+            onServiceHistory: false,
+            showProfileForm: false,
+        };
+    }
+
+
+
+    render(){
+        var users = this.props.users.map((user, index) => {
+            return(
+                <TableRow>
+                    <TableHeaderColumn> {index} </TableHeaderColumn>
+                    <TableHeaderColumn> {user.age} </TableHeaderColumn>
+                    <TableHeaderColumn> {user.sex} </TableHeaderColumn>
+                </TableRow>
+            )
+        })
+        
+        return (
+            <Table>
+            <TableHeader>
+            <TableRow>
+                <TableHeaderColumn>ID</TableHeaderColumn>
+                <TableHeaderColumn>Age</TableHeaderColumn>
+                <TableHeaderColumn>Sex</TableHeaderColumn>
+            </TableRow>
+            </TableHeader>
+            <TableBody>
+                {users}
+            </TableBody>
+        </Table> 
+        );
+    }
+}
 
   export default PersonsTable;
 

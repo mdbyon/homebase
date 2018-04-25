@@ -8,6 +8,7 @@ import {TitleBar} from 'react-desktop/windows';
 import Paper from 'material-ui/Paper'
 import configureStore from './store';
 import ProfileFormContainer from './containers/ProfileFormContainer';
+import PersonsTableContainer from './containers/PersonsTableContainer'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import { Provider } from 'react-redux';
 import PersonsTable from './PersonsTable';
@@ -51,8 +52,10 @@ class HomePage extends Component {
   }
 
   render() {
-  var table = this.state.onServiceHistory ?        
-    <PersonsTable /> : <div></div>
+  var table = this.state.onServiceHistory ?
+  <Provider store = {store}>    
+    <PersonsTableContainer />
+  </Provider> : <div></div>
 
   var profileForm = this.state.showProfileForm ? 
   <Provider store = {store}>

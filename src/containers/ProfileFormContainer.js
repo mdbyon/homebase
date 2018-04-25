@@ -7,8 +7,8 @@ import ProfileForm from '../ProfileForm';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmit: (text) => {
-            dispatch(profileActions.addUser(text))
+        onSubmit: (user) => {
+            dispatch(profileActions.addUser(user))
         }
       }
     }
