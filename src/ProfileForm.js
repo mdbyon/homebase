@@ -16,15 +16,21 @@ class ProfileForm extends Component {
             sex: '',
             lookingFor: ''
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = (e) =>{
         this.setState({age: e.target.value})
     }
 
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        this.props.onSubmit(this.state);
+    }
+
     render(){
         return (
-        <form onSubmit={this.props.onSubmit(this.state)}>
+        <form onSubmit = {this.handleSubmit}>
             <div className = 'formEntry'>
             <label>Age</label>
             <div className = 'fieldEntry'>
@@ -72,7 +78,8 @@ class ProfileForm extends Component {
             </div>
             </div>
             <div>
-            <RaisedButton className = 'profileButton' label="Submit" primary={true} />
+            <RaisedButton className = 'profileButton' label="Submit" primary={true}
+            type = "submit" />
             </div>
         </form>
         )

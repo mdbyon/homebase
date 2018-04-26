@@ -38,6 +38,7 @@ class HomePage extends Component {
   }
   
   handleDrawerItemClick = (e, item) => {
+    
     if(item == 'MyCommunityService'){
       this.setState({onServiceHistory: true,
                     showProfileForm: false});

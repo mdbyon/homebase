@@ -22,8 +22,6 @@ class PersonsTable extends Component{
         };
     }
 
-
-
     render(){
         var users = this.props.users.map((user, index) => {
             return(
