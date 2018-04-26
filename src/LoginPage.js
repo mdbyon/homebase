@@ -55,8 +55,6 @@ class LoginPage extends Component {
   
         </div>
       </MuiThemeProvider>
-        
-      
     );
   }
 } 
