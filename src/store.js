@@ -19,6 +19,13 @@ export function configureStore() {
         age: "15",
         sex: "Female"
       }
+    ],
+    listingsForm: [
+      {
+        hospitals:[
+          
+        ]
+      }
     ]
   }
 

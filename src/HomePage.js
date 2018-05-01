@@ -9,6 +9,8 @@ import Paper from 'material-ui/Paper';
 import configureStore from './store';
 import ProfileFormContainer from './containers/ProfileFormContainer';
 import PersonsTableContainer from './containers/PersonsTableContainer';
+import ListingsContainer from './containers/ListingsContainer'; 
+import HomeContainer from './containers/HomeContainer';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import { Provider } from 'react-redux';
 import PersonsTable from './PersonsTable';
@@ -27,9 +29,11 @@ class HomePage extends Component {
     super(props);
     this.state = {
       open: true,
+      onHome: false,
       onSettings: false,
       onServiceHistory: false,
-      showProfileForm: false
+      showProfileForm: false,
+      showListings:false,
     };
   }
 
@@ -37,17 +41,42 @@ class HomePage extends Component {
     if (item == 'MyCommunityService') {
       this.setState({
         onServiceHistory: true,
-        showProfileForm: false
+        showProfileForm: false,
+        onHome: false,
+        showListings:false
       });
     }
     if (item == 'Profile') {
       this.setState({
         onServiceHistory: false,
-        showProfileForm: true
+        showProfileForm: true,
+        onHome:false,
+        showListings: false
       });
     }
     if (item == 'Settings') {
-      this.setState({ onServiceHistory: false });
+      this.setState({ 
+        onServiceHistory: false,
+        showProfileForm: false,
+        onHome:false,
+        showListings: false
+       });
+    }
+    if(item == 'Home') {
+      this.setState({
+        onHome:true,
+        showListings:false,
+        onServiceHistory: false,
+        showProfileForm: false
+      })
+    }
+    if(item == 'Show Listings') {
+      this.setState({
+        showListings:true,
+        onHome:false,
+        onServiceHistory: false,
+        showProfileForm: false
+      })
     }
   };
 
@@ -68,10 +97,29 @@ class HomePage extends Component {
       <div />
     );
 
+    var homeForm = this.state.onHome ? (
+      <Provider store={store}>
+        <HomeContainer />
+      </Provider>
+    ) : (
+      <div />
+    );
+
+    var listingsTable = this.state.onListings ? (
+      <Provider store={store}>
+        <ListingsContainer />
+      </Provider>
+    ) : (
+      <div />
+    );
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div>
           <Drawer open={this.state.open}>
+            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Home')}>
+              Home
+            </MenuItem>
             <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Profile')}>
               Profile
             </MenuItem>
@@ -83,8 +131,12 @@ class HomePage extends Component {
             <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Settings')}>
               Settings
             </MenuItem>
+            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Show Listings')}>
+              Show Listings
+            </MenuItem>
           </Drawer>
           <Paper id="homePaper">
+            <div id ="homeForm">{homeForm}</div>
             <div id="myCommunityServiceTable">{table}</div>
             <div id="profileForm">{profileForm}</div>
           </Paper>

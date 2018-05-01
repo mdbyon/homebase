@@ -10,19 +10,19 @@ import {
     TableRowColumn,
   } from 'material-ui/Table';
 
-class PersonsTable extends Component{
+class ListingsTable extends Component{
     
     constructor(props){
         super(props);
     }
 
     render(){
-        var users = this.props.users.map((user, index) => {
+        var listings = this.props.listings.map((listing, index) => {
             return(
                 <TableRow>
                     <TableHeaderColumn> {index} </TableHeaderColumn>
-                    <TableHeaderColumn> {user.age} </TableHeaderColumn>
-                    <TableHeaderColumn> {user.sex} </TableHeaderColumn>
+                    <TableHeaderColumn> {listing.hospitals.name} </TableHeaderColumn>
+                    <TableHeaderColumn> {listing.hospitals.vicinity} </TableHeaderColumn>
                 </TableRow>
             )
         })
@@ -32,17 +32,17 @@ class PersonsTable extends Component{
             <TableHeader>
             <TableRow>
                 <TableHeaderColumn>ID</TableHeaderColumn>
-                <TableHeaderColumn>Age</TableHeaderColumn>
-                <TableHeaderColumn>Sex</TableHeaderColumn>
+                <TableHeaderColumn>Business Name</TableHeaderColumn>
+                <TableHeaderColumn>Address</TableHeaderColumn>
             </TableRow>
             </TableHeader>
             <TableBody>
-                {users}
+                {listings}
             </TableBody>
         </Table> 
         );
     }
 }
 
-  export default PersonsTable;
+  export default ListingsTable;
 
