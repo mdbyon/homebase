@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {TextField} from 'material-ui';
 import {
     Table,
@@ -28,7 +27,7 @@ class PersonsTable extends Component{
         })
         
         return (
-            <Table>
+            <Table className = 'table'>
             <TableHeader>
             <TableRow>
                 <TableHeaderColumn>ID</TableHeaderColumn>
@@ -41,6 +40,7 @@ class PersonsTable extends Component{
             </TableBody>
         </Table> 
         );
+
     }
 }
 

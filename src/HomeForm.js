@@ -11,12 +11,12 @@ class HomeForm extends Component {
         super(props);
         this.state = {
             location: '',
-            raidius: '',
+            radius: '',
             hospitals: false,
             schools: false,
             churches: false,
             libraries: false
-        };
+        };  
         this.handleCheckBox = this.handleCheckBox.bind(this);
     }
 
@@ -24,23 +24,14 @@ class HomeForm extends Component {
         this.setState({location: e.target.value})
     }
 
-    handleCheckBox = (category) =>{
-        if(category == 'HOSPITAL'){
-            this.setState({hospitals: !this.state.hospitals})
+
+    handleCheckBox = () =>{     
+        this.setState({hospitals: !this.state.hospitals})
             if(this.state.hospitals){
-                this.props.onCheck(category,this.state.radius, this.state.location)
+                this.props.onCheck('HOSPITALS',this.state.radius, this.state.location)
             }
-        }
-        if(category == 'schools'){
-            this.setState({schools: !this.state.schools})
-        }
-        if(category == 'churches'){
-            this.setState({churches: !this.state.churches})
-        }
-        if(category == 'libraries'){
-            this.setState({libraries: !this.state.libraries})
-        }
     }
+
     render(){
         return (
         <form >
@@ -59,25 +50,25 @@ class HomeForm extends Component {
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Hospitals"
-                onCheck = {this.handleCheckBox('HOSPITAL')}
+                onCheck = {this.handleCheckBox}
                 />
             </div>
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Schools"
-                onCheck = {this.handleCheckBox('schools')}
+                onCheck = {this.handleCheckBox}
                 />
             </div>
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Churches"
-                onCheck = {this.handleCheckBox('churches')}
+                onCheck = {this.handleCheckBox}
                 />
             </div>
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Libraries"
-                onCheck = {this.handleCheckBox('libraries')}
+                onCheck = {this.handleCheckBox}
                 />
             </div>
             </div>

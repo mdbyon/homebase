@@ -21,18 +21,18 @@ class ListingsTable extends Component{
             return(
                 <TableRow>
                     <TableHeaderColumn> {index} </TableHeaderColumn>
-                    <TableHeaderColumn> {listing.hospitals.name} </TableHeaderColumn>
-                    <TableHeaderColumn> {listing.hospitals.vicinity} </TableHeaderColumn>
+                    <TableHeaderColumn> {listing.name} </TableHeaderColumn>
+                    <TableHeaderColumn> {listing.vicinity} </TableHeaderColumn>
                 </TableRow>
             )
         })
         
         return (
-            <Table>
+            <Table className = 'table'>
             <TableHeader>
             <TableRow>
-                <TableHeaderColumn>ID</TableHeaderColumn>
-                <TableHeaderColumn>Business Name</TableHeaderColumn>
+                <TableHeaderColumn>#</TableHeaderColumn>
+                <TableHeaderColumn>Business</TableHeaderColumn>
                 <TableHeaderColumn>Address</TableHeaderColumn>
             </TableRow>
             </TableHeader>
@@ -43,6 +43,7 @@ class ListingsTable extends Component{
         );
     }
 }
+
 
   export default ListingsTable;
 

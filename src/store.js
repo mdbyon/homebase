@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';  
 import communityServiceAppReducer from './reducers/rootReducer';
+import thunk from 'redux-thunk'; 
 
 const composeEnhancers =  
   typeof window === 'object' &&
@@ -8,7 +9,6 @@ const composeEnhancers =
     : compose);
 
 export function configureStore() {  
-  const middlewares = [];
   const initialState =  {     
     profileForm: [    
       {
@@ -21,18 +21,14 @@ export function configureStore() {
       }
     ],
     listingsForm: [
-      {
-        hospitals:[
-          
-        ]
-      }
+
     ]
   }
 
   const store = createStore(
     communityServiceAppReducer,
     initialState,
-    composeEnhancers(applyMiddleware(...middlewares))
+    composeEnhancers(applyMiddleware(thunk))
   );
   return store;
 }

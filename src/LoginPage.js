@@ -25,13 +25,13 @@ class LoginPage extends Component {
   }
   
   handleChange = (event, entry) => {
-    if(entry == 'firstname'){
+    if(entry === 'firstname'){
       this.setState({firstname: event.target.value});
     }
-    if(entry == 'lastname'){
+    if(entry === 'lastname'){
       this.setState({lastname: event.target.value});
     }
-    if(entry == 'email'){
+    if(entry === 'email'){
       this.setState({email: event.target.value});
     }
   }

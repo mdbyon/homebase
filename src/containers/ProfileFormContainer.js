@@ -1,5 +1,3 @@
-import React from 'react';  
-import { reduxForm } from 'redux-form';
 import {connect} from 'react-redux'
 import { addUser } from '../actions/profileActions'
 import ProfileForm from '../ProfileForm';

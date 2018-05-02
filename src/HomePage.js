@@ -4,16 +4,14 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { TitleBar } from 'react-desktop/windows';
 import Paper from 'material-ui/Paper';
-import configureStore from './store';
+import configureStore from './store'; 
 import ProfileFormContainer from './containers/ProfileFormContainer';
 import PersonsTableContainer from './containers/PersonsTableContainer';
 import ListingsContainer from './containers/ListingsContainer'; 
 import HomeContainer from './containers/HomeContainer';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import { Provider } from 'react-redux';
-import PersonsTable from './PersonsTable';
 
 import './styles/form.css';
 
@@ -38,7 +36,7 @@ class HomePage extends Component {
   }
 
   handleDrawerItemClick = (e, item) => {
-    if (item == 'MyCommunityService') {
+    if (item === 'MyCommunityService') {
       this.setState({
         onServiceHistory: true,
         showProfileForm: false,
@@ -46,7 +44,7 @@ class HomePage extends Component {
         showListings:false
       });
     }
-    if (item == 'Profile') {
+    if (item === 'Profile') {
       this.setState({
         onServiceHistory: false,
         showProfileForm: true,
@@ -54,7 +52,7 @@ class HomePage extends Component {
         showListings: false
       });
     }
-    if (item == 'Settings') {
+    if (item === 'Settings') {
       this.setState({ 
         onServiceHistory: false,
         showProfileForm: false,
@@ -62,7 +60,7 @@ class HomePage extends Component {
         showListings: false
        });
     }
-    if(item == 'Home') {
+    if(item === 'Home') {
       this.setState({
         onHome:true,
         showListings:false,
@@ -70,7 +68,7 @@ class HomePage extends Component {
         showProfileForm: false
       })
     }
-    if(item == 'Show Listings') {
+    if(item === 'ShowListings') {
       this.setState({
         showListings:true,
         onHome:false,
@@ -105,7 +103,7 @@ class HomePage extends Component {
       <div />
     );
 
-    var listingsTable = this.state.onListings ? (
+    var listingsTable = this.state.showListings ? (
       <Provider store={store}>
         <ListingsContainer />
       </Provider>
@@ -131,14 +129,20 @@ class HomePage extends Component {
             <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Settings')}>
               Settings
             </MenuItem>
-            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Show Listings')}>
+            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'ShowListings')}>
               Show Listings
             </MenuItem>
           </Drawer>
           <Paper id="homePaper">
-            <div id ="homeForm">{homeForm}</div>
-            <div id="myCommunityServiceTable">{table}</div>
-            <div id="profileForm">{profileForm}</div>
+          <div id = 'tableDisplay'>
+            {listingsTable}
+            {table}
+          </div>
+          <div id = "display">
+            {homeForm}
+            {profileForm}
+          </div>
+
           </Paper>
         </div>
       </MuiThemeProvider>

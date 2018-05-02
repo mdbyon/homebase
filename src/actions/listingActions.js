@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SEARCH, GETALL, GOOGLE_PLACES_API_URL, GOOGLE_PLACES_API_KEY} from '../constants/constants';
+import {GOOGLE_PLACES_API_URL, GOOGLE_PLACES_API_KEY} from '../constants/constants';
 import NodeGeocoder from 'node-geocoder';
 
 var options = {
@@ -11,7 +11,7 @@ var options = {
 
 
   export function search(criteria, radius, location) {
-
+    let request;
     var geocoder = NodeGeocoder(options);
     let lattitude;
     let longitude;
@@ -26,19 +26,23 @@ var options = {
       console.log(err);
     });
 
-
-    return function(dispatch){
-        axios.get({GOOGLE_PLACES_API_URL}`/
-            location=${lattitude},${longitude}
-            &radius=${radius}&type=${criteria}
-            &key=${GOOGLE_PLACES_API_KEY}`)
-        .then(response => {
-            dispatch({
-                type: `LIST_${criteria}`,
-                payload: response.results
-            })
-        })
+    return dispatch => {
+        request = axios.get(`${GOOGLE_PLACES_API_URL}/
+                    location=${lattitude},${longitude}
+                    &radius=${radius}&type=${criteria}
+                    &key=${GOOGLE_PLACES_API_KEY}`,{
+                    headers: {"Access-Control-Allow-Origin": "*"}})
+            .then(response => {
+                dispatch(getListings(response, criteria))
+        });
     }
+  }
+
+  export const getListings = (listings, criteria) =>{
+      return{
+          type: `LIST_${criteria}`,
+          payload: listings.results
+      }
   }
   
   export const listAll = (listings) => {
