@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import FlatButton from 'material-ui/FlatButton';
 import {TextField} from 'material-ui';
 import {
     Table,
@@ -17,7 +18,10 @@ class ListingsTable extends Component{
     }
 
     render(){
-        var listings = this.props.listings.map((listing, index) => {
+
+        console.log(this.props.listings);
+        if(this.props.listings.hospitals != null){
+            var listings = this.props.listings.hospitals.map((listing, index) => {
             return(
                 <TableRow>
                     <TableHeaderColumn> {index} </TableHeaderColumn>
@@ -26,6 +30,7 @@ class ListingsTable extends Component{
                 </TableRow>
             )
         })
+    }
         
         return (
             <Table className = 'table'>
@@ -40,6 +45,7 @@ class ListingsTable extends Component{
                 {listings}
             </TableBody>
         </Table> 
+        
         );
     }
 }

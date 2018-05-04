@@ -27,18 +27,16 @@ var options = {
     });
 
     return dispatch => {
-        request = axios.get(`${GOOGLE_PLACES_API_URL}/
-                    location=${lattitude},${longitude}
-                    &radius=${radius}&type=${criteria}
-                    &key=${GOOGLE_PLACES_API_KEY}`,{
+        request = axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=42.3600825,-71.0588801&radius=1500&type=hospital&key=AIzaSyCwiPY7J56ERTLPmbdOcT4yGOi-zK9Puy4',{
                     headers: {"Access-Control-Allow-Origin": "*"}})
             .then(response => {
-                dispatch(getListings(response, criteria))
+                console.log(response);
+                dispatch(getListings(response.data, 'HOSPITALS'))
         });
     }
   }
 
-  export const getListings = (listings, criteria) =>{
+  export const getListings = (listings, criteria) =>{   
       return{
           type: `LIST_${criteria}`,
           payload: listings.results

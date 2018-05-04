@@ -1,12 +1,12 @@
-const listingsReducer = (state = [], action) => {
+const listingsReducer = (state = {}, action) => {
     switch(action.type){
       case "LIST_HOSPITALS":
-        return [
-            ...state,
-            {
+        return {
+            ...state,       
+            
                 hospitals: action.payload
-            }
-        ]
+            
+        }
       case "LIST_SCHOOLS":
         return [
             ...state,

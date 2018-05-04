@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "chai": "^4.1.2",
     "city-to-coords": "^1.1.0",
+    "cors": "^2.8.4",
     "eslint-config-airbnb": "^16.1.0",
     "material-ui": "^0.20.0",
     "node-geocoder": "^3.22.0",
