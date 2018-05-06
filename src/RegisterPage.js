@@ -8,10 +8,7 @@ import './styles/form.css';
 import RegisterForm from './RegisterForm.js';
 
 class RegisterPage extends Component {
-  static defaultProps = {
-    color: '#1A237E',
-    theme: 'dark'
-  };
+
 
   constructor(props) {
     super(props);
@@ -21,9 +18,13 @@ class RegisterPage extends Component {
       email: '',
       isRegistered: false
     };
+    defaultProps = {
+      color: '#1A237E',
+      theme: 'dark'
+    };
   }
 
-  handleChange = (event, entry) => {
+  handleChange(event, entry)  {
     if (entry === 'firstname') {
       this.setState({ firstname: event.target.value });
     }

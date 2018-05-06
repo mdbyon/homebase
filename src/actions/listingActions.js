@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {GOOGLE_PLACES_API_URL, GOOGLE_PLACES_API_KEY} from '../constants/constants';
 import NodeGeocoder from 'node-geocoder';
+import { locationToLatLong } from '../utilities/locationToLatLong';
 
 var options = {
     provider: 'google',
@@ -13,27 +14,21 @@ var options = {
   export function search(criteria, radius, location) {
     let request;
     var geocoder = NodeGeocoder(options);
-    let lattitude;
-    let longitude;
+    let coords;
 
-    geocoder.geocode(location)
-    .then(function(res) {
-      lattitude = res.lattitude;
-      longitude = res.longitude;
+    coords =  locationToLatLong(location);
+    console.log(coords);
 
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-
-    return dispatch => {
-        request = axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=42.3600825,-71.0588801&radius=1500&type=hospital&key=AIzaSyCwiPY7J56ERTLPmbdOcT4yGOi-zK9Puy4',{
-                    headers: {"Access-Control-Allow-Origin": "*"}})
-            .then(response => {
-                console.log(response);
-                dispatch(getListings(response.data, 'HOSPITALS'))
-        });
-    }
+        return dispatch => {
+             request = axios.get(`${GOOGLE_PLACES_API_URL}
+                          location=${coords.lattitude},${coords.longitude}
+                       &radius=${radius}&type=${criteria}
+                           &key=${GOOGLE_PLACES_API_KEY}`,{
+                           headers: {"Access-Control-Allow-Origin": "*"}})
+                   .then(response => {
+                        dispatch(getListings(response, criteria))
+                });
+             }
   }
 
   export const getListings = (listings, criteria) =>{   

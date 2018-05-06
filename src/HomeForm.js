@@ -24,6 +24,10 @@ class HomeForm extends Component {
         this.setState({location: e.target.value})
     }
 
+    handleRadius = (e) =>{
+        this.setState({radius: e.target.value})
+    }
+
 
     handleCheckBox = () =>{     
         this.setState({hospitals: !this.state.hospitals})
@@ -42,6 +46,17 @@ class HomeForm extends Component {
                 className="location"                                
                 placeholder="Enter Location"
                 onChange = {this.handleChange}
+                />
+            </div>
+            </div>
+
+            <div className = 'formEntry'>
+            <label>How many mile radius would you like to search in?</label>
+            <div className = 'fieldEntry'>
+                <TextField
+                className="radius"                                
+                placeholder="Enter Radius"
+                onChange = {this.handleRadius}
                 />
             </div>
             </div>

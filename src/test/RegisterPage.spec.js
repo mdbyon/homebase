@@ -9,7 +9,5 @@ configure({ adapter: new Adapter() });
 
 describe('WelcomeForm', ()=>{
     it('should render a div', ()=>{
-        const wrapper = shallow(<RegisterPage />);
-        expect(wrapper.find('#WelcomeWrapper').length).toEqual(1);
     });
 });
