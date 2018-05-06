@@ -14,7 +14,6 @@ export const locationToLatLong = location => {
             .then(function(response){
                     let list = {};
                     list = response.data.results[0].geometry.location
-                    console.log(list);
                     return list;           
         });
 }

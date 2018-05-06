@@ -16,19 +16,16 @@ var options = {
     var geocoder = NodeGeocoder(options);
     let coords;
 
-    coords =  locationToLatLong(location);
-    console.log(coords);
-
-        return dispatch => {
-             request = axios.get(`${GOOGLE_PLACES_API_URL}
-                          location=${coords.lattitude},${coords.longitude}
-                       &radius=${radius}&type=${criteria}
-                           &key=${GOOGLE_PLACES_API_KEY}`,{
-                           headers: {"Access-Control-Allow-Origin": "*"}})
+   return dispatch => { 
+       locationToLatLong(location).then(response =>{
+            console.log(response);
+             request = axios.get(`${GOOGLE_PLACES_API_URL}location=${response.lat},${response.lng}&radius=${radius}&type=${criteria}&key=${GOOGLE_PLACES_API_KEY}`,{headers: {"Access-Control-Allow-Origin": "*"}})
                    .then(response => {
+                       console.log(response);
                         dispatch(getListings(response, criteria))
                 });
-             }
+             })
+        };
   }
 
   export const getListings = (listings, criteria) =>{   
