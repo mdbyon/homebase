@@ -1,6 +1,6 @@
 const listingsReducer = (state = {}, action) => {
     switch(action.type){
-      case "LIST_HOSPITALS":
+      case "LIST_hospital":
         return {
             ...state,       
             

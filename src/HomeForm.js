@@ -32,7 +32,7 @@ class HomeForm extends Component {
     handleCheckBox = () =>{     
         this.setState({hospitals: !this.state.hospitals})
             if(this.state.hospitals){
-                this.props.onCheck('HOSPITALS',this.state.radius, this.state.location)
+                this.props.onCheck('hospital',this.state.radius, this.state.location)
             }
     }
 

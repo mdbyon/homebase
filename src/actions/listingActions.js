@@ -19,9 +19,10 @@ var options = {
    return dispatch => { 
        locationToLatLong(location).then(response =>{
             console.log(response);
-             request = axios.get(`${GOOGLE_PLACES_API_URL}location=${response.lat},${response.lng}&radius=${radius}&type=${criteria}&key=${GOOGLE_PLACES_API_KEY}`,{headers: {"Access-Control-Allow-Origin": "*"}})
-                   .then(response => {
+             request = axios.get(`${GOOGLE_PLACES_API_URL}location=${response.lat},${response.lng}&radius=${radius}&type=${criteria}&key=${GOOGLE_PLACES_API_KEY}`,
+             {headers: {"Access-Control-Allow-Origin": "*"}}).then(response => {
                        console.log(response);
+                       console.log(request);
                         dispatch(getListings(response, criteria))
                 });
              })
@@ -31,7 +32,7 @@ var options = {
   export const getListings = (listings, criteria) =>{   
       return{
           type: `LIST_${criteria}`,
-          payload: listings.results
+          payload: listings.data.results
       }
   }
   
