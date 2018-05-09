@@ -13,9 +13,11 @@ class RegisterForm extends Component {
     this.state = {
       redirect: false
     };
+    this.setRedirect = this.setRedirect.bind(this);
   }
 
-  setRedirect = () => {
+
+  setRedirect() {
     this.setState({
       redirect: true
     });
@@ -60,6 +62,7 @@ class RegisterForm extends Component {
               <div id="login">
                 <RaisedButton
                   className="button"
+                  id = 'loginButton'
                   label="Login"
                   primary={true}
                   onClick={this.setRedirect}

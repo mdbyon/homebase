@@ -21,10 +21,6 @@ class RegisterPage extends Component {
 
   }
 
-   defaultProps = {
-    color: '#1A237E',
-    theme: 'dark'
-  };
 
   handleChange(event, entry)  {
     if (entry === 'firstname') {
