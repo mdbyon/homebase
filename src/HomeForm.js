@@ -34,7 +34,9 @@ class HomeForm extends Component {
             if(this.state.hospitals){
                 this.props.onCheck('hospital',this.state.radius, this.state.location)
             }
+            
     }
+    
 
     render(){
         return (
