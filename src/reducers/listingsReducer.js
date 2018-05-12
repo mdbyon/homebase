@@ -7,13 +7,13 @@ const listingsReducer = (state = {}, action) => {
                 hospitals: action.payload
             
         }
-      case "LIST_SCHOOLS":
-        return [
+      case "LIST_school":
+        return {
             ...state,
-            {
+            
                 schools: action.payload
-            }
-        ]
+            
+        }
 
       case "DELETE_USER":
           const updatedUsers = state.users.filter(user => user.payload !== action.payload)

@@ -12,8 +12,8 @@ class HomeForm extends Component {
         this.state = {
             location: '',
             radius: '',
-            hospitals: false,
-            schools: false,
+            hospital: false,
+            school: false,
             churches: false,
             libraries: false
         };  
@@ -29,18 +29,31 @@ class HomeForm extends Component {
     }
 
 
-    handleCheckBox = () =>{     
-        this.setState({hospitals: !this.state.hospitals})
-            if(this.state.hospitals){
-                this.props.onCheck('hospital',this.state.radius, this.state.location)
-            }
+    handleCheckBox = (e, value) =>{     
+        
+        if(value == 'hospital'){
+            this.setState({hospital: !this.state.hospitals})
+        }
+        if(value == 'school'){
+            this.setState({school: !this.state.schools})
+        }
             
+    }
+
+    handleSubmit = (e, checkedValues) =>{
+        e.preventDefault();
+        Object.keys(checkedValues).map((value) => {
+            console.log(value);
+            if(checkedValues[value] == true){
+                this.props.onCheck(value, this.state.radius, this.state.location)
+            }
+        })
     }
     
 
     render(){
         return (
-        <form >
+        <form onSubmit = {(e)=>{this.handleSubmit(e,this.state)}}>
             <div className = 'formEntry'>
             <label>What city would you like to Volunteer in?</label>
             <div className = 'fieldEntry'>
@@ -67,13 +80,13 @@ class HomeForm extends Component {
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Hospitals"
-                onCheck = {this.handleCheckBox}
+                onCheck = {(e) => {this.handleCheckBox(e,'hospital')}}
                 />
             </div>
             <div className = 'fieldEntry'>
                 <Checkbox
                 label="Schools"
-                onCheck = {this.handleCheckBox}
+                onCheck = {(e) => {this.handleCheckBox(e, 'school')}}
                 />
             </div>
             <div className = 'fieldEntry'>

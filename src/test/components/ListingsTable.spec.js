@@ -1,10 +1,11 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import expect from 'expect';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ListingsTable from '../../ListingsTable';
 import expectJSX from 'expect-jsx';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 expect.extend(expectJSX);
 import {
     Table,
@@ -14,13 +15,12 @@ import {
     TableRow,
     TableRowColumn,
   } from 'material-ui/Table';
+import { MuiThemeProvider } from 'material-ui/styles';
 
 
 configure({ adapter: new Adapter() });
 
-const props = {
-
-listings:{
+const testVals = {
 
     hospitals:[
         {
@@ -42,7 +42,6 @@ listings:{
             vicinity: "55 La Palma"
         }
     ]
-}
 }
 
 const hospitalListings = (
@@ -78,9 +77,11 @@ const churchListings = (
 );
  
 describe('Listings Table', ()=>{
-    const wrapper = shallow(<ListingsTable {...props}/>);
+
+    const wrapper = mount(<MuiThemeProvider><ListingsTable listings= {testVals}/></MuiThemeProvider>)
+
     it('should render a tabbed table depending on listings props', ()=>{
-        expect(wrapper.find('#hospitalTab')).to.exist;
+        expect(wrapper.find('#hospitals')).to.have.length(1);
     });
 
     it('should populate each tab correctly', ()=>{

@@ -31,13 +31,15 @@ class ListingsTable extends Component{
     render(){
 
         console.log(this.props.listings);
-        if(this.props.listings.hospitals != null){
+        if(this.props.listings != null){
             var listings = Object.keys(this.props.listings).map((listing) =>{
-                console.log(listing);
+                console.log(`${listing}`);
+                var stringListing = `${listing}`
+                console.log(this.props.listings[listing]);
         return (
-            <div>
+            <div id = {stringListing}>
                 <Tab label = {listing}/>
-                <Table className = 'tableHeader'>
+                <Table className = {`${listing}`}>
                         <TableHeader>
                                 <TableRow>
                                     <TableHeaderColumn>#</TableHeaderColumn>
@@ -45,13 +47,14 @@ class ListingsTable extends Component{
                                     <TableHeaderColumn>Address</TableHeaderColumn>
                                 </TableRow>
                             </TableHeader>
-                </Table>
+                </Table>     
            
             {
+    
                 this.props.listings[listing].map((desc, index)=>{
 
                 return (
-                    <Table className = 'tableBody'>
+                    <Table className = {listing}>
                         <TableBody>
                         <TableRow>
                             <TableHeaderColumn> {index} </TableHeaderColumn>
