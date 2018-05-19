@@ -78,10 +78,10 @@ const churchListings = (
  
 describe('Listings Table', ()=>{
 
-    const wrapper = mount(<MuiThemeProvider><ListingsTable listings= {testVals}/></MuiThemeProvider>)
+    const wrapper = shallow(<ListingsTable listings= {testVals}/>)
 
     it('should render a tabbed table depending on listings props', ()=>{
-        expect(wrapper.find('#hospitals')).to.have.length(1);
+        expect(wrapper.find('Tabs')).to.exist;
     });
 
     it('should populate each tab correctly', ()=>{

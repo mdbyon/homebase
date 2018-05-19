@@ -21,7 +21,7 @@ export function configureStore() {
       }
     ],
     listingsForm: [
-
+      
     ]
   }
 

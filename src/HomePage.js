@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
+import Sidebar from 'grommet/components/Sidebar';
+import Header from 'grommet/components/Header';
+import Title from 'grommet/components/Title';
+import Split from 'grommet/components/Split';
+import Box from 'grommet/components/Box';
+import Menu from 'grommet/components/Menu';
+import Anchor from 'grommet/components/Anchor';
+import Footer from 'grommet/components/Footer';
+import Button from 'grommet/components/Button';
+import User from 'grommet/components/icons/base/User';
 import configureStore from './store'; 
 import ProfileFormContainer from './containers/ProfileFormContainer';
 import PersonsTableContainer from './containers/PersonsTableContainer';
 import ListingsContainer from './containers/ListingsContainer'; 
 import HomeContainer from './containers/HomeContainer';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import { Provider } from 'react-redux';
 
 import './styles/form.css';
@@ -112,40 +116,36 @@ class HomePage extends Component {
     );
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <div>
-          <Drawer open={this.state.open}>
-            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Home')}>
-              Home
-            </MenuItem>
-            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Profile')}>
-              Profile
-            </MenuItem>
-            <MenuItem
-              onClick={e => this.handleDrawerItemClick(e, 'MyCommunityService')}
-            >
-              MyCommunityService
-            </MenuItem>
-            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'Settings')}>
-              Settings
-            </MenuItem>
-            <MenuItem onClick={e => this.handleDrawerItemClick(e, 'ShowListings')}>
-              Show Listings
-            </MenuItem>
-          </Drawer>
-          <Paper id="homePaper">
-          <div id = 'tableDisplay'>
-            {listingsTable}
-            {table}
+      <div>
+       
+        <Sidebar className = 'sidebar'
+         colorIndex='neutral-1'
+         fixed ={false}>
+          <Box flex='grow'
+            justify='start'>
+            <Menu primary={true}>
+              <Anchor onClick = {(e) => this.handleDrawerItemClick(e,'Home')}>
+                Home
+              </Anchor>
+              <Anchor onClick = {(e) => this.handleDrawerItemClick(e,'ShowListings')}>
+                Show Listings
+              </Anchor>
+            </Menu>
+          </Box>
+            <Footer pad='medium'>
+              <Button icon={<User />} />
+            </Footer>
+          </Sidebar>
+          <Box>
+          <div>
+              {listingsTable}
+              {table}
+              {homeForm}
+              {profileForm}
           </div>
-          <div id = "display">
-            {homeForm}
-            {profileForm}
-          </div>
-
-          </Paper>
-        </div>
-      </MuiThemeProvider>
+          </Box>
+         
+      </div>
     );
   }
 }

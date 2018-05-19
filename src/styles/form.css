@@ -20,6 +20,24 @@
     margin: 10px;
 }
 
+.listingTab{
+    left: 20%;
+}
+
+.loginForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.homeForm{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
 #submit{
     position: relative;
     top: 150px;
@@ -32,6 +50,7 @@
     left: 277px;
 
 }
+
 
 #homePaper{
     position: relative;
@@ -50,9 +69,20 @@
     height: 999px;
 }
 
+.sidebar{
+   position: absolute;
+   left: 0px;
+}
 
 .formEntry{
     padding: 10px;
+}
+
+.testForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .fieldEntry{
@@ -66,6 +96,12 @@
 .checkBox {
     padding-top: 7px;
     padding-bottom: 16px;
+}
+
+.grommetux-table, .grommetux-table table {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 100px;
 }
 
 .comments{

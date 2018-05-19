@@ -1,87 +1,83 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FlatButton from 'material-ui/FlatButton';
-import {TextField} from 'material-ui';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-  } from 'material-ui/Table';
+import Tabs from 'grommet/components/Tabs';
+import Tab from 'grommet/components/Tab';
+import Table from 'grommet/components/Table';
+import TableRow from 'grommet/components/TableRow';
 
 class ListingsTable extends Component{
     
     constructor(props){
         super(props);
         this.state ={
-            value: 'a'
+            selectedIndex: 0
         }
         
     }
 
     handleChange (value) {
         this.setState({
-          value: value,
+          sel: value,
         });
     };
 
+ 
     render(){
 
         console.log(this.props.listings);
         if(this.props.listings != null){
-            var listings = Object.keys(this.props.listings).map((listing) =>{
-                console.log(`${listing}`);
-                var stringListing = `${listing}`
-                console.log(this.props.listings[listing]);
+            var listings = Object.keys(this.props.listings).map((listing, index) =>{
+
         return (
-            <div id = {stringListing}>
-                <Tab label = {listing}/>
-                <Table className = {`${listing}`}>
-                        <TableHeader>
-                                <TableRow>
-                                    <TableHeaderColumn>#</TableHeaderColumn>
-                                    <TableHeaderColumn>Business</TableHeaderColumn>
-                                    <TableHeaderColumn>Address</TableHeaderColumn>
-                                </TableRow>
-                            </TableHeader>
-                </Table>     
+            
+                <Tab className = 'listingTab'
+                title = {listing}>
+                    <Table className = 'table'>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Business</th>
+                                </tr>
+                            </thead>
+                    </Table>     
            
             {
     
                 this.props.listings[listing].map((desc, index)=>{
 
                 return (
-                    <Table className = {listing}>
-                        <TableBody>
-                        <TableRow>
-                            <TableHeaderColumn> {index} </TableHeaderColumn>
-                                <TableHeaderColumn> {desc.name} </TableHeaderColumn>
-                                <TableHeaderColumn> {desc.vicinity} </TableHeaderColumn>
-                        </TableRow>
-                        </TableBody>
-                        </Table>
-                     
+                    <div>
+                    <Table className = {listing}
+                            scrollable = {true}>
+                        <tbody>
+                            <TableRow>
+                                <td> {index} </td>
+                                <td> {desc.name} </td>
+                            </TableRow>
+                        </tbody>
+                    </Table>
+                    
+                    </div>    
                         );   
                 })
             }
-        </div>
+            </Tab>
+          
+            
         )
     })
 }
      
     return (
-        <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-        >
-            {listings}
+        <Tabs className = 'tabs'
+              activeIndex = {this.state.selectedIndex}
+              onActive={(e)=>this.setState({selectedIndex: e})}>
+                {listings}
         </Tabs>
+       
         
     )
-}
+    }
 }
     
     

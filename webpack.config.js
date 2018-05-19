@@ -1,11 +1,35 @@
-const babelConfig = Object.assign({}, pkg.babel, {
-    babelrc: false,
-    cacheDirectory: useHMR,
-    presets: pkg.babel.presets.map((x) => x === 'latest' ? ['latest', { es2015: { modules: false } }] : x),
-  });
-  
-  babelConfig.presets.push({
-    plugins: [
-      path.resolve(__dirname, 'babelRelayPlugin.js'),
+
+const path = require('path');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 2 },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')({
+                  browsers: ['last 1 version', 'ie >= 11'],
+                }),
+              ],
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, '..', 'node_modules')],
+            },
+          },
+        ],
+      },
     ],
-  });   
+  },
+};

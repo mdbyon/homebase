@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "carbon-components": "^8.21.0",
     "city-to-coords": "^1.1.0",
     "cors": "^2.8.4",
     "eslint-config-airbnb": "^16.1.0",
     "expect": "^22.4.3",
     "expect-jsx": "^5.0.0",
+    "grommet": "^1.10.1",
     "jest": "20.0.4",
     "material-ui": "^0.20.0",
     "node-geocoder": "^3.22.0",

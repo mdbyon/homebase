@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {TextField} from 'material-ui';
-import Checkbox from 'material-ui/Checkbox';
+import Form from 'grommet/components/Form';
+import FormFields from 'grommet/components/FormFields';
+import FormField from 'grommet/components/FormField';
+import TextInput from 'grommet/components/TextInput';
+import Header from 'grommet/components/Header';
+import Button from 'grommet/components/Button';
+import Footer from 'grommet/components/Footer';
+import Heading from 'grommet/components/Heading';
+import CheckBox from 'grommet/components/CheckBox';
 import Label from 'react-desktop/windows';
-import RaisedButton from 'material-ui/RaisedButton';
+
 import './styles/form.css';
 
 class HomeForm extends Component {
@@ -15,7 +22,8 @@ class HomeForm extends Component {
             hospital: false,
             school: false,
             churches: false,
-            libraries: false
+            libraries: false,
+            isLoading: false,
         };  
         this.handleCheckBox = this.handleCheckBox.bind(this);
     }
@@ -53,60 +61,42 @@ class HomeForm extends Component {
 
     render(){
         return (
-        <form onSubmit = {(e)=>{this.handleSubmit(e,this.state)}}>
-            <div className = 'formEntry'>
-            <label>What city would you like to Volunteer in?</label>
-            <div className = 'fieldEntry'>
-                <TextField
-                className="location"                                
-                placeholder="Enter Location"
-                onChange = {this.handleChange}
-                />
-            </div>
-            </div>
+        <div id = 'homeContainer'>
+        <Form className = 'homeForm'
+              onSubmit = {(e) => this.handleSubmit(e, this.state)}>
+            <Header>
+                <Heading>
+                    Find Volunteering Opportunities
+                </Heading>
+            </Header>
+            <FormFields>
+            <FormField label='What city would you like to volunteer in?'>
+                <TextInput onDOMChange = {this.handleChange}/>
+            </FormField>
 
-            <div className = 'formEntry'>
-            <label>How many mile radius would you like to search in?</label>
-            <div className = 'fieldEntry'>
-                <TextField
-                className="radius"                                
-                placeholder="Enter Radius"
-                onChange = {this.handleRadius}
-                />
-            </div>
-            </div>
-            <div className = 'formEntry'>
-            <label htmlFor="showCategories">Which categories of community service interests you?</label>
-            <div className = 'fieldEntry'>
-                <Checkbox
-                label="Hospitals"
-                onCheck = {(e) => {this.handleCheckBox(e,'hospital')}}
-                />
-            </div>
-            <div className = 'fieldEntry'>
-                <Checkbox
-                label="Schools"
-                onCheck = {(e) => {this.handleCheckBox(e, 'school')}}
-                />
-            </div>
-            <div className = 'fieldEntry'>
-                <Checkbox
-                label="Churches"
-                onCheck = {this.handleCheckBox}
-                />
-            </div>
-            <div className = 'fieldEntry'>
-                <Checkbox
-                label="Libraries"
-                onCheck = {this.handleCheckBox}
-                />
-            </div>
-            </div>
-            <div>
-            <RaisedButton className = 'HomeButton' label="Submit" primary={true}
-            type = "submit" />
-            </div>
-        </form>
+            <FormField label='Enter Search Radius'>
+                <TextInput onDOMChange = {this.handleRadius}/>
+            </FormField>
+
+            <FormField label ='What categories interests you?'>
+                <CheckBox label = 'Hospitals'
+                          onChange = {(e) => this.handleCheckBox(e, 'hospital')}/>
+                <CheckBox label = 'Schools'
+                          onChange = {(e) => this.handleCheckBox(e, 'school')}/>
+                <CheckBox label = 'Churches'
+                          onChange = {(e) => this.handleCheckBox(e, 'church')}/>
+                <CheckBox label = 'Libraries'
+                          onChange = {(e) => this.handleCheckBox(e, 'library')}/>
+            </FormField>
+            </FormFields>
+            <Footer pad={{"vertical": "medium"}}>
+                <Button label='Submit'
+                type='submit'
+                primary={true}
+                 />
+            </Footer>
+        </Form>
+        </div>
         )
     }
 }
