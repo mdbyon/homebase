@@ -1,36 +1,34 @@
-import { createStore, applyMiddleware, compose } from 'redux';  
-import communityServiceAppReducer from './reducers/rootReducer';
-import thunk from 'redux-thunk'; 
+import { createStore, applyMiddleware, compose } from 'redux'
+import communityServiceAppReducer from './reducers/rootReducer'
+import thunk from 'redux-thunk'
 
-const composeEnhancers =  
+const composeEnhancers =
   typeof window === 'object' &&
   (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose);
+    : compose)
 
-export function configureStore() {  
-  const initialState =  {     
-    profileForm: [    
+export function configureStore() {
+  const initialState = {
+    profileForm: [
       {
-        age: "11", 
-        sex: "Male"
+        age: '11',
+        sex: 'Male',
       },
       {
-        age: "15",
-        sex: "Female"
-      }
+        age: '15',
+        sex: 'Female',
+      },
     ],
-    listingsForm: [
-      
-    ]
+    listingsForm: [],
   }
 
   const store = createStore(
     communityServiceAppReducer,
     initialState,
     composeEnhancers(applyMiddleware(thunk))
-  );
-  return store;
+  )
+  return store
 }
 
-export default configureStore;  
+export default configureStore

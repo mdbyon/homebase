@@ -1,27 +1,26 @@
-import React, { Component } from 'react';
-import { TextField, RaisedButton } from 'material-ui';
-import { MuiThemeProvider } from 'material-ui/styles';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { TextField, RaisedButton } from 'material-ui'
+import { MuiThemeProvider } from 'material-ui/styles'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import PropTypes from 'prop-types'
+import Paper from 'material-ui/Paper'
+import { Redirect } from 'react-router-dom'
 
 class RegisterForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      redirect: false
-    };
-    this.setRedirect = this.setRedirect.bind(this);
+      redirect: false,
+    }
+    this.setRedirect = this.setRedirect.bind(this)
   }
-
 
   setRedirect() {
     this.setState({
-      redirect: true
-    });
-  };
+      redirect: true,
+    })
+  }
 
   render() {
     return this.state.redirect ? (
@@ -62,7 +61,7 @@ class RegisterForm extends Component {
               <div id="login">
                 <RaisedButton
                   className="button"
-                  id = 'loginButton'
+                  id="loginButton"
                   label="Login"
                   primary={true}
                   onClick={this.setRedirect}
@@ -72,14 +71,14 @@ class RegisterForm extends Component {
           </Paper>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
-export default RegisterForm;
+export default RegisterForm
 
 RegisterForm.propTypes = {
   handleFirstName: PropTypes.func.isRequired,
   handleLastName: PropTypes.func.isRequired,
-  handleEmail: PropTypes.func.isRequired
-};
+  handleEmail: PropTypes.func.isRequired,
+}
