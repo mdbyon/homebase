@@ -10,9 +10,17 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(search(criteria, radius, location))
         }
       } 
+}
+
+const mapStateToProps = (state) => {
+    return {
+        homeListings: state.listingsForm,
+        requests: state.requests
     }
+  }
+
   
 
-let HomeContainer = connect(null, mapDispatchToProps)(HomeForm)
+let HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeForm)
 export default HomeContainer
 

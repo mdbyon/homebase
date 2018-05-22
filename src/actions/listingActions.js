@@ -19,15 +19,29 @@ var options = {
    return dispatch => { 
        locationToLatLong(location).then(response =>{
             console.log(response);
+            dispatch(requestGooglePlaces());
              request = axios.get(`${GOOGLE_PLACES_API_URL}location=${response.lat},${response.lng}&radius=${radius}&type=${criteria}&key=${GOOGLE_PLACES_API_KEY}`,
              {headers: {"Access-Control-Allow-Origin": "*"}}).then(response => {
-                       console.log(response);
-                       console.log(request);
+                        console.log(response);  
+                        dispatch(receivedGooglePlaces());
                         dispatch(getListings(response, criteria))
                 });
              })
         };
   }
+
+  export const requestGooglePlaces = () => {
+      return {
+        type: 'REQUEST_GOOGLE_PLACES'
+      }
+  }
+
+  export const receivedGooglePlaces = () => {
+    return {
+      type: 'RECEIVED_GOOGLE_PLACES'
+    }
+}
+
 
   export const getListings = (listings, criteria) =>{   
       return{

@@ -10,9 +10,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render((
     <App>
-        <Split/> 
     <BrowserRouter>
-       
             <Main />
         
     </BrowserRouter>

@@ -21,10 +21,11 @@ class ListingsTable extends Component{
         });
     };
 
- 
+    
     render(){
 
         console.log(this.props.listings);
+        console.log(Object.keys(this.props.listings));
         if(this.props.listings != null){
             var listings = Object.keys(this.props.listings).map((listing, index) =>{
 

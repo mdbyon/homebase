@@ -4,7 +4,8 @@ import ListingsTable from '../ListingsTable';
 
 function mapStateToProps(state) {
     return {
-        listings: state.listingsForm
+        listings: state.listingsForm,
+        requests: state.requests
     }
   }
 

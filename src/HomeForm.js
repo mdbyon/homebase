@@ -9,7 +9,7 @@ import Button from 'grommet/components/Button';
 import Footer from 'grommet/components/Footer';
 import Heading from 'grommet/components/Heading';
 import CheckBox from 'grommet/components/CheckBox';
-import Label from 'react-desktop/windows';
+import Spinning from 'grommet/components/icons/Spinning';
 
 import './styles/form.css';
 
@@ -96,6 +96,7 @@ class HomeForm extends Component {
                  />
             </Footer>
         </Form>
+        {this.props.requests.makeRequest ? (this.props.requests.didLoad ? <div></div> : <Spinning className = 'spinner' size = 'large' />) : <div></div> }
         </div>
         )
     }
