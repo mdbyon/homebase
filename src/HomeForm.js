@@ -12,6 +12,7 @@ import CheckBox from 'grommet/components/CheckBox'
 import Spinning from 'grommet/components/icons/Spinning'
 
 import './styles/form.css'
+import ListingsContainer from './containers/ListingsContainer';
 
 class HomeForm extends Component {
   constructor(props) {
@@ -99,7 +100,7 @@ class HomeForm extends Component {
         </Form>
         {this.props.requests.makeRequest ? (
           this.props.requests.didLoad ? (
-            <div />
+            <ListingsContainer/>
           ) : (
             <Spinning className="spinner" size="large" />
           )

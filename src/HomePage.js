@@ -85,33 +85,25 @@ class HomePage extends Component {
 
   render() {
     var table = this.state.onServiceHistory ? (
-      <Provider store={store}>
         <PersonsTableContainer />
-      </Provider>
     ) : (
       <div />
     )
 
     var profileForm = this.state.showProfileForm ? (
-      <Provider store={store}>
         <ProfileFormContainer />
-      </Provider>
     ) : (
       <div />
     )
 
     var homeForm = this.state.onHome ? (
-      <Provider store={store}>
         <HomeContainer />
-      </Provider>
     ) : (
       <div />
     )
 
     var listingsTable = this.state.showListings ? (
-      <Provider store={store}>
         <ListingsContainer />
-      </Provider>
     ) : (
       <div />
     )
@@ -121,7 +113,7 @@ class HomePage extends Component {
         <App centered = {false}>
           <Split flex = 'right' priority = 'right'>
           <Box size = 'medium'>
-            <Sidebar className="sidebar" colorIndex="neutral-1" fixed={false}>
+            <Sidebar className="sidebar" colorIndex="neutral-1" fixed={true}>
               <Menu primary={true}>
                 <Anchor onClick={e => this.handleDrawerItemClick(e, 'Home')}>
                   Home
