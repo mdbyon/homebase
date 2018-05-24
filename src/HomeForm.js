@@ -10,6 +10,7 @@ import Footer from 'grommet/components/Footer'
 import Heading from 'grommet/components/Heading'
 import CheckBox from 'grommet/components/CheckBox'
 import Spinning from 'grommet/components/icons/Spinning'
+import {Redirect} from 'react-router'
 
 import './styles/form.css'
 import ListingsContainer from './containers/ListingsContainer';
@@ -100,7 +101,7 @@ class HomeForm extends Component {
         </Form>
         {this.props.requests.makeRequest ? (
           this.props.requests.didLoad ? (
-            <ListingsContainer/>
+            <Redirect to = '/listings'/>
           ) : (
             <Spinning className="spinner" size="large" />
           )

@@ -11,6 +11,12 @@ import configureStore from './store'
 
 const store = configureStore();
 
+const Listings = () => {
+  return (
+    <HomePage showListings = {true}/>
+  );
+}
+
 
 const Main = () => (
   <main>
@@ -20,7 +26,7 @@ const Main = () => (
           <div>
             <Route exact path="/" component={RegisterPage} />
             <Route path="/home" component={HomePage} />
-            <Route path ="/listings" component = {ListingsContainer} />
+            <Route path ="/listings" render = {Listings} />
           </div>
         </Router>
       </Provider>

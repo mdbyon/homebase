@@ -11,16 +11,13 @@ import Anchor from 'grommet/components/Anchor'
 import Footer from 'grommet/components/Footer'
 import Button from 'grommet/components/Button'
 import User from 'grommet/components/icons/base/User'
-import configureStore from './store'
 import ProfileFormContainer from './containers/ProfileFormContainer'
 import PersonsTableContainer from './containers/PersonsTableContainer'
 import ListingsContainer from './containers/ListingsContainer'
 import HomeContainer from './containers/HomeContainer'
-import { Provider } from 'react-redux'
 
 import './styles/form.css'
 
-const store = configureStore()
 
 class HomePage extends Component {
   static defaultProps = {
@@ -49,22 +46,6 @@ class HomePage extends Component {
         showListings: false,
       })
     }
-    if (item === 'Profile') {
-      this.setState({
-        onServiceHistory: false,
-        showProfileForm: true,
-        onHome: false,
-        showListings: false,
-      })
-    }
-    if (item === 'Settings') {
-      this.setState({
-        onServiceHistory: false,
-        showProfileForm: false,
-        onHome: false,
-        showListings: false,
-      })
-    }
     if (item === 'Home') {
       this.setState({
         onHome: true,
@@ -84,17 +65,6 @@ class HomePage extends Component {
   }
 
   render() {
-    var table = this.state.onServiceHistory ? (
-        <PersonsTableContainer />
-    ) : (
-      <div />
-    )
-
-    var profileForm = this.state.showProfileForm ? (
-        <ProfileFormContainer />
-    ) : (
-      <div />
-    )
 
     var homeForm = this.state.onHome ? (
         <HomeContainer />
@@ -102,7 +72,7 @@ class HomePage extends Component {
       <div />
     )
 
-    var listingsTable = this.state.showListings ? (
+    var listingsTable = this.state.showListings || this.props.showListings ? (
         <ListingsContainer />
     ) : (
       <div />
@@ -132,9 +102,7 @@ class HomePage extends Component {
         <Box>
           <div>
             {listingsTable}
-            {table}
             {homeForm}
-            {profileForm}
           </div>
         </Box>
         </Split>
