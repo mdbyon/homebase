@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Sidebar from 'grommet/components/Sidebar'
 import Header from 'grommet/components/Header'
 import Title from 'grommet/components/Title'
+import App from 'grommet/components/App'
 import Split from 'grommet/components/Split'
 import Box from 'grommet/components/Box'
 import Menu from 'grommet/components/Menu'
@@ -117,23 +118,25 @@ class HomePage extends Component {
 
     return (
       <div>
-        <Sidebar className="sidebar" colorIndex="neutral-1" fixed={false}>
-          <Box flex="grow" justify="start">
-            <Menu primary={true}>
-              <Anchor onClick={e => this.handleDrawerItemClick(e, 'Home')}>
-                Home
-              </Anchor>
-              <Anchor
-                onClick={e => this.handleDrawerItemClick(e, 'ShowListings')}
-              >
-                Show Listings
-              </Anchor>
-            </Menu>
-          </Box>
+        <App centered = {false}>
+          <Split flex = 'right' priority = 'right'>
+          <Box size = 'medium'>
+            <Sidebar className="sidebar" colorIndex="neutral-1" fixed={false}>
+              <Menu primary={true}>
+                <Anchor onClick={e => this.handleDrawerItemClick(e, 'Home')}>
+                  Home
+                </Anchor>
+                <Anchor
+                  onClick={e => this.handleDrawerItemClick(e, 'ShowListings')}
+                >
+                  Show Listings
+                </Anchor>
+              </Menu>
           <Footer pad="medium">
             <Button icon={<User />} />
           </Footer>
         </Sidebar>
+        </Box>
         <Box>
           <div>
             {listingsTable}
@@ -142,6 +145,8 @@ class HomePage extends Component {
             {profileForm}
           </div>
         </Box>
+        </Split>
+        </App>
       </div>
     )
   }

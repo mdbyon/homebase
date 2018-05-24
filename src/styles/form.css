@@ -33,9 +33,9 @@
 
 .homeForm{
     position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
+    top: 100px;
+    left: 200px;
+
 }
 
 #submit{
@@ -52,15 +52,6 @@
 }
 
 
-#homePaper{
-    position: relative;
-    left: 250px;
-}
-
-#tablePaper{
-    position: relative;
-    left: 250px;
-}
 
 #display{
     position: relative;
@@ -98,11 +89,6 @@
     padding-bottom: 16px;
 }
 
-.grommetux-table, .grommetux-table table {
-    width: 100%;
-    max-width: 100%;
-    margin-left: 100px;
-}
 
 .spinner{
     position: absolute;
