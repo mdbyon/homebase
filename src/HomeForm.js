@@ -11,16 +11,24 @@ import Heading from 'grommet/components/Heading'
 import CheckBox from 'grommet/components/CheckBox'
 import Spinning from 'grommet/components/icons/Spinning'
 import {Redirect} from 'react-router'
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import {milesToMeters} from './utilities/milesToMeters';
 
 import './styles/form.css'
 import ListingsContainer from './containers/ListingsContainer';
+
+const sliderStyle = {width: 400, margin: 35 }
+const marks = {
+    0: '0', 1: '1', 2: '2', 3: '3',4: '4', 5: '5',6: '6',7: '7',8: '8',9: '9',10: '10',11: '11',12: '12',13: '13',14: '14',15: '15',16: '16',
+    17: '17',18: '18',19: '19',20: '20'}
 
 class HomeForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       location: '',
-      radius: '',
+      radius: '16093.44',
       hospital: false,
       school: false,
       churches: false,
@@ -35,7 +43,10 @@ class HomeForm extends Component {
   }
 
   handleRadius = e => {
-    this.setState({ radius: e.target.value })
+    let meterVal;
+    console.log(e);
+    meterVal = milesToMeters(e);
+    this.setState({ radius: meterVal })
   }
 
   handleCheckBox = (e, value) => {
@@ -57,6 +68,7 @@ class HomeForm extends Component {
     })
   }
 
+
   render() {
     return (
       <div id="homeContainer">
@@ -72,8 +84,11 @@ class HomeForm extends Component {
               <TextInput onDOMChange={this.handleChange} />
             </FormField>
 
-            <FormField label="Enter Search Radius">
-              <TextInput onDOMChange={this.handleRadius} />
+            <FormField label="Enter Search Radius (miles)">
+                <div style = {sliderStyle}>
+                    <Slider min={0} max={20} defaultValue={10} marks = {marks}
+                            onAfterChange = {this.handleRadius} />
+                </div>
             </FormField>
 
             <FormField label="What categories interests you?">
