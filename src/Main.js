@@ -3,25 +3,27 @@ import React from 'react'
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
 import HomePage from './HomePage'
-import ProfileFormContainer from './containers/ProfileFormContainer'
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux'
 import ListingsContainer from './containers/ListingsContainer'
+import PreferencesPage from './PreferencesPage'
 import configureStore from './store'
-import ListingsPage from './ListingsPage';
+import ListingsPage from './ListingsPage'
+import PreferencesPageContainer from './containers/pages/PreferencesPageContainer';
+import PreferencesContainer from './containers/PreferencesContainer'
+import ListingsPageContainer from './containers/pages/ListingsPageContainer';
 
-
-const store = configureStore();
-
+const store = configureStore()
 
 const Main = () => (
   <main>
     <Switch>
-      <Provider store = {store}>
+      <Provider store={store}>
         <Router>
           <div>
             <Route exact path="/" component={RegisterPage} />
             <Route path="/home" component={HomePage} />
-            <Route path ="/listings" component = {ListingsPage} />
+            <Route path="/listings" component={ListingsPageContainer} />
+            <Route path = "/preferences" component ={PreferencesPageContainer} />
           </div>
         </Router>
       </Provider>

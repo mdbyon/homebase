@@ -11,24 +11,20 @@ import Footer from 'grommet/components/Footer'
 import Button from 'grommet/components/Button'
 import User from 'grommet/components/icons/base/User'
 
-export const SideBar = (props) =>{
-    return(
-        <Box size = 'medium'>
-            <Sidebar className="sidebar" colorIndex="neutral-1" fixed={true}>
-            <Menu primary={true}>
-                <Anchor onClick={(e) => props.handleHome(e)}>
-                Home
-                </Anchor>
-                <Anchor
-                onClick={(e) => props.handleListings(e)}
-                >
-                Show Listings
-                </Anchor>
-            </Menu>
-            <Footer pad="medium">
-            <Button icon={<User />} />
-            </Footer>
-            </Sidebar>
-        </Box>
-    );
+export const SideBar = props => {
+  return (
+    <Box size="medium">
+      <Sidebar className="sidebar" colorIndex="neutral-1" fixed={true}>
+        <Menu primary={true}>
+          <Anchor onClick={e => props.handleHome(e)}>Home</Anchor>
+          <Anchor onClick={e => props.handlePreferences(e)}> Look for Opportunities</Anchor>
+          <Anchor onClick={e => props.handleListings(e)}>Show Listings</Anchor>
+          
+        </Menu>
+        <Footer pad="medium">
+          <Button icon={<User />} />
+        </Footer>
+      </Sidebar>
+    </Box>
+  )
 }

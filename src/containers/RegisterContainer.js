@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
-import { search, requestHome, requestPreferences } from '../actions/listingActions'
-import RegisterPage from '../RegisterPage';
+import {
+  search,
+  requestHome,
+  requestPreferences,
+} from '../actions/listingActions'
+import RegisterPage from '../RegisterPage'
 
 const mapDispatchToProps = dispatch => {
   return {
     goHome: () => {
       dispatch(requestHome())
-    }
+    },
   }
 }
 
@@ -16,5 +20,7 @@ const mapStateToProps = state => {
   }
 }
 
-let RegisterContainer = connect(mapStateToProps, mapDispatchToProps)(RegisterPage)
+let RegisterContainer = connect(mapStateToProps, mapDispatchToProps)(
+  RegisterPage
+)
 export default RegisterContainer

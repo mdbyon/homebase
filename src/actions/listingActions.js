@@ -31,8 +31,9 @@ export function search(criteria, radius, location) {
         )
         .then(response => {
           console.log(response)
-          dispatch(receivedGooglePlaces())
           dispatch(getListings(response, criteria))
+          dispatch(receivedGooglePlaces())
+         
         })
     })
   }
@@ -47,6 +48,29 @@ export const requestGooglePlaces = () => {
 export const receivedGooglePlaces = () => {
   return {
     type: 'RECEIVED_GOOGLE_PLACES',
+  }
+}
+
+export const requestHome = () => {
+  return {
+    type: 'REQUEST_HOME',
+  }
+}
+
+export const requestRedirect = () => {
+  return{ 
+    type: 'REQUEST_REDIRECT_TO_LISTINGS',
+  }
+}
+export const requestPreferences = () => {
+  return {
+    type: 'REQUEST_PREFERENCES',
+  }
+}
+
+export const requestListings = () => {
+  return {
+    type: 'REQUEST_LISTINGS',
   }
 }
 

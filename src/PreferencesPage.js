@@ -9,13 +9,13 @@ import Footer from 'grommet/components/Footer'
 import Button from 'grommet/components/Button'
 import User from 'grommet/components/icons/base/User'
 import ListingsContainer from './containers/ListingsContainer'
-import HomeContainer from './containers/HomeContainer'
+import PreferencesContainer from './containers/PreferencesContainer'
 import { SideBar } from './SideBar'
 import { Redirect } from 'react-router'
 
 import './styles/form.css'
 
-class HomePage extends Component {
+class PreferencesPage extends Component {
   static defaultProps = {
     color: '#1A237E',
     theme: 'dark',
@@ -30,41 +30,31 @@ class HomePage extends Component {
       onServiceHistory: false,
       showProfileForm: false,
       showListings: false,
-      showPreferences: false
+      showPreferences: true,
     }
   }
 
   handleDrawerItemClick = (e, item) => {
-    if (item === 'ShowPreferences') {
-      this.setState({
-        showPreferences: true,
-        onHome: false,
-        showListings: false,
-      })
-    }
+
     if (item === 'Home') {
-      this.setState({
-        onHome: true,
-        showListings: false,
-        showPreferences: false,
-      })
+    
     }
-    if (item === 'ShowListings') {
-      this.setState({
-        showListings: true,
-        onHome: false,
-        showPreferences: false,
-      })
+    if (item == 'ShowListings') {
+        this.props.requestListings();
     }
   }
 
+  
+
   render() {
-    var homeForm = this.state.onHome ? <HomeContainer /> : <div />
+    var homeForm = this.state.onHome ? <Redirect to = '/home' /> : <div />
 
-    var preferencesForm = this.state.showPreferences ? <Redirect to = '/preferences' /> : <div />
+    var preferencesForm = this.props.requests.requestPreferences ? <PreferencesContainer /> : <div />
 
-    var listingsTable = this.state.showListings ? (
-      <Redirect to="/listings" />
+    var listingsTable = this.props.requests.requestListings ? (
+      <div>
+        <Redirect to="/listings" /> 
+    </div>
     ) : (
       <div />
     )
@@ -93,9 +83,5 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage
+export default PreferencesPage
 
-HomePage.propTypes = {
-  color: PropTypes.string.isRequired,
-  theme: PropTypes.string.isRequired,
-}

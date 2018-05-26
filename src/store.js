@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import communityServiceAppReducer from './reducers/rootReducer'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -21,12 +22,16 @@ export function configureStore() {
       },
     ],
     listingsForm: [],
+    requests: {
+      requestPreferences: false,
+      requestListings: false
+    }
   }
 
   const store = createStore(
     communityServiceAppReducer,
     initialState,
-    composeEnhancers(applyMiddleware(thunk))
+    composeWithDevTools(applyMiddleware(thunk))
   )
   return store
 }

@@ -3,75 +3,72 @@ import PropTypes from 'prop-types'
 import App from 'grommet/components/App'
 import Split from 'grommet/components/Split'
 import Box from 'grommet/components/Box'
-import {SideBar} from './SideBar'
+import { SideBar } from './SideBar'
 import HomeContainer from './containers/HomeContainer'
 import ListingsContainer from './containers/ListingsContainer'
-import {Redirect} from 'react-router'
+import { Redirect } from 'react-router'
 
 import './styles/form.css'
 
-
 class ListingsPage extends Component {
-
-
   constructor(props) {
     super(props)
     this.state = {
       open: true,
       onHome: false,
-      onSettings: false,
-      onServiceHistory: false,
-      showProfileForm: false,
       showListings: true,
+      ShowPreferences: false,
     }
   }
 
   handleDrawerItemClick = (e, item) => {
     if (item === 'Home') {
-      this.setState({
-        onHome: true,
-        showListings: false,
-        onServiceHistory: false,
-        showProfileForm: false,
-      })
     }
     if (item === 'ShowListings') {
-      this.setState({
-        showListings: true,
-        onHome: false,
-        onServiceHistory: false,
-        showProfileForm: false,
-      })
+        this.setState({showListings: true});
+    }
+    if (item == 'ShowPreferences') {
+        this.props.requestPreferences();
+        this.setState({ShowPreferences: true});
     }
   }
 
   render() {
+    var homeForm = this.state.onHome ? <Redirect to="/home" /> : <div />
 
-    var homeForm = this.state.onHome ? (
-        <Redirect to = '/home' />
-    ) : (
-      <div />
-    )
+    var preferencesForm = this.props.requests.requestPreferences ? 
+        <div>
+            <Redirect to= "/preferences" 
+             from = "/listings"/> 
+        </div>
+        
+        : <div />
 
-    var listingsTable = this.state.showListings ? (
-        <ListingsContainer />
+    var listingsTable = this.props.requests.requestListings || this.props.requests.visited ? (
+      <ListingsContainer />
     ) : (
       <div />
     )
 
     return (
       <div>
-        <App centered = {false}>
-          <Split flex = 'right' priority = 'right'>
-            <SideBar handleHome = {(e) => this.handleDrawerItemClick(e,'Home')}
-              handleListings = {(e) => this.handleDrawerItemClick(e, 'ShowListings')}/>
+        <App centered={false}>
+          <Split flex="right" priority="right">
+            <SideBar
+              handleHome={e => this.handleDrawerItemClick(e, 'Home')}
+              handleListings={e =>
+                this.handleDrawerItemClick(e, 'ShowListings')}
+              handlePreferences = {(e) => this.handleDrawerItemClick(e, 'ShowPreferences')}
+              
+            />
             <Box>
-            <div>
+              <div>
                 {listingsTable}
+                {preferencesForm}
                 {homeForm}
-            </div>
+              </div>
             </Box>
-        </Split>
+          </Split>
         </App>
       </div>
     )
@@ -79,4 +76,3 @@ class ListingsPage extends Component {
 }
 
 export default ListingsPage
-
