@@ -7,15 +7,10 @@ import ProfileFormContainer from './containers/ProfileFormContainer'
 import {Provider} from 'react-redux';
 import ListingsContainer from './containers/ListingsContainer'
 import configureStore from './store'
+import ListingsPage from './ListingsPage';
 
 
 const store = configureStore();
-
-const Listings = () => {
-  return (
-    <HomePage showListings = {true}/>
-  );
-}
 
 
 const Main = () => (
@@ -26,7 +21,7 @@ const Main = () => (
           <div>
             <Route exact path="/" component={RegisterPage} />
             <Route path="/home" component={HomePage} />
-            <Route path ="/listings" render = {Listings} />
+            <Route path ="/listings" component = {ListingsPage} />
           </div>
         </Router>
       </Provider>
