@@ -20,17 +20,11 @@ import './styles/form.css'
 class HomeForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
+    this.state = {}
   }
 
-
   render() {
-    return (
-      <div id="homeContainer">
-      
-      </div>
-    )
+    return <div id="homeContainer" />
   }
 }
 

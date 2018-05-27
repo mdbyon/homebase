@@ -1,7 +1,11 @@
 import { connect } from 'react-redux'
 import { search } from '../actions/listingActions'
 import PreferencesForm from '../PreferencesForm'
-import {requestListings, requestRedirect} from '../actions/listingActions'
+import {
+  requestListings,
+  requestRedirect,
+  finishedFetching,
+} from '../actions/listingActions'
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -9,21 +13,25 @@ const mapDispatchToProps = dispatch => {
       dispatch(search(criteria, radius, location))
     },
     requestListings: () => {
-        dispatch(requestListings())
+      dispatch(requestListings())
     },
     requestRedirect: () => {
-        dispatch(requestRedirect())
+      dispatch(requestRedirect())
+    },
+    finishedFetching: () => {
+      dispatch(finishedFetching())
     },
   }
 }
 
 const mapStateToProps = state => {
-    return {
-      homeListings: state.listingsForm,
-      requests: state.requests,
-    }
+  return {
+    homeListings: state.listingsForm,
+    requests: state.requests,
   }
+}
 
-
-let PreferencesContainer = connect(mapStateToProps, mapDispatchToProps)(PreferencesForm)
+let PreferencesContainer = connect(mapStateToProps, mapDispatchToProps)(
+  PreferencesForm
+)
 export default PreferencesContainer

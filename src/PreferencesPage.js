@@ -35,31 +35,34 @@ class PreferencesPage extends Component {
   }
 
   handleDrawerItemClick = (e, item) => {
-
     if (item === 'Home') {
-      this.props.requestHome();
-    
+      this.props.requestHome()
     }
     if (item == 'ShowListings') {
-        this.props.requestListings();
+      this.props.requestListings()
     }
     if (item == 'ShowPreferences') {
-      this.setState({showPreferences: true});
-
+      this.setState({ showPreferences: true })
+    }
   }
-}
-
-  
 
   render() {
-    var homeForm = this.props.requests.requestHome ? <Redirect to = '/home' /> : <div />
+    var homeForm = this.props.requests.requestHome ? (
+      <Redirect to="/home" />
+    ) : (
+      <div />
+    )
 
-    var preferencesForm = this.state.showPreferences ? <PreferencesContainer /> : <div />
+    var preferencesForm = this.state.showPreferences ? (
+      <PreferencesContainer />
+    ) : (
+      <div />
+    )
 
     var listingsTable = this.props.requests.requestListings ? (
       <div>
-        <Redirect to="/listings" /> 
-    </div>
+        <Redirect to="/listings" />
+      </div>
     ) : (
       <div />
     )
@@ -71,8 +74,11 @@ class PreferencesPage extends Component {
             <SideBar
               handleHome={e => this.handleDrawerItemClick(e, 'Home')}
               handleListings={e =>
-                this.handleDrawerItemClick(e, 'ShowListings')}
-              handlePreferences ={e => this.handleDrawerItemClick(e, 'ShowPreferences')}
+                this.handleDrawerItemClick(e, 'ShowListings')
+              }
+              handlePreferences={e =>
+                this.handleDrawerItemClick(e, 'ShowPreferences')
+              }
             />
             <Box>
               <div>
@@ -89,4 +95,3 @@ class PreferencesPage extends Component {
 }
 
 export default PreferencesPage
-

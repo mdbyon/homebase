@@ -50,8 +50,8 @@ class PreferencesForm extends Component {
       radius: '16093.44',
       hospital: false,
       school: false,
-      churches: false,
-      libraries: false,
+      church: false,
+      library: false,
       isLoading: false,
     }
     this.handleCheckBox = this.handleCheckBox.bind(this)
@@ -70,10 +70,16 @@ class PreferencesForm extends Component {
 
   handleCheckBox = (e, value) => {
     if (value == 'hospital') {
-      this.setState({ hospital: !this.state.hospitals })
+      this.setState({ hospital: !this.state.hospital })
     }
     if (value == 'school') {
-      this.setState({ school: !this.state.schools })
+      this.setState({ school: !this.state.school })
+    }
+    if (value == 'church') {
+      this.setState({ church: !this.state.church })
+    }
+    if (value == 'library') {
+      this.setState({ library: !this.state.library })
     }
   }
 
@@ -85,6 +91,7 @@ class PreferencesForm extends Component {
         this.props.onCheck(value, this.state.radius, this.state.location)
       }
     })
+    this.props.finishedFetching()
   }
 
   render() {
@@ -137,22 +144,23 @@ class PreferencesForm extends Component {
             <Button label="Submit" type="submit" primary={true} />
           </Footer>
         </Form>
-        
-           { this.props.requests.makeRequest ? (
-            this.props.requests.didLoad ? (
-                <div>   
-                        <Redirect to="/listings"
-                        />
-                        {this.props.requestRedirect()}
-                </div>
+
+        {this.props.requests.makeRequest ? (
+          this.props.requests.didLoad ? (
+            this.props.requests.finishedFetching ? (
+              <div>
+                <Redirect to="/listings" />
+                {this.props.requestRedirect()}
+              </div>
             ) : (
-                <Spinning className="spinner" size="large" />
+              <div />
             )
+          ) : (
+            <Spinning className="spinner" size="large" />
+          )
         ) : (
           <div />
         )}
-        
-
       </div>
     )
   }

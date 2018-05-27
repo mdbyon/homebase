@@ -33,7 +33,6 @@ export function search(criteria, radius, location) {
           console.log(response)
           dispatch(getListings(response, criteria))
           dispatch(receivedGooglePlaces())
-         
         })
     })
   }
@@ -58,7 +57,7 @@ export const requestHome = () => {
 }
 
 export const requestRedirect = () => {
-  return{ 
+  return {
     type: 'REQUEST_REDIRECT_TO_LISTINGS',
   }
 }
@@ -78,6 +77,12 @@ export const getListings = (listings, criteria) => {
   return {
     type: `LIST_${criteria}`,
     payload: listings.data.results,
+  }
+}
+
+export const finishedFetching = () => {
+  return {
+    type: 'FINISHED_FETCHING',
   }
 }
 

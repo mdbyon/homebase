@@ -4,7 +4,7 @@ const requestsReducer = (state = {}, action) => {
       return {
         ...state,
         makeRequest: true,
-        didLoad: false
+        didLoad: false,
       }
 
     case 'RECEIVED_GOOGLE_PLACES':
@@ -12,15 +12,15 @@ const requestsReducer = (state = {}, action) => {
         ...state,
         didLoad: true,
       }
-    
+
     case 'REQUEST_REDIRECT_TO_LISTINGS':
       return {
-        visited: true
+        redirect: true,
       }
     case 'REQUEST_HOME':
       return {
         ...state,
-
+        redirect: false,
         requestHome: true,
         requestPreferences: false,
         requestListings: false,
@@ -28,7 +28,7 @@ const requestsReducer = (state = {}, action) => {
     case 'REQUEST_PREFERENCES':
       return {
         ...state,
-
+        redirect: false,
         requestHome: false,
         requestPreferences: true,
         requestListings: false,
@@ -36,10 +36,15 @@ const requestsReducer = (state = {}, action) => {
     case 'REQUEST_LISTINGS':
       return {
         ...state,
-
+        redirect: false,
         requestHome: false,
         requestPreferences: false,
         requestListings: true,
+      }
+    case 'FINISHED_FETCHING':
+      return {
+        ...state,
+        finishedFetching: true,
       }
     default:
       return state

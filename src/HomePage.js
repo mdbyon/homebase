@@ -31,7 +31,7 @@ class HomePage extends Component {
 
   handleDrawerItemClick = (e, item) => {
     if (item === 'ShowPreferences') {
-        this.props.requestPreferences();
+      this.props.requestPreferences()
     }
     if (item === 'Home') {
       this.setState({
@@ -39,22 +39,22 @@ class HomePage extends Component {
       })
     }
     if (item === 'ShowListings') {
-        this.props.requestListings();
+      this.props.requestListings()
     }
   }
 
   render() {
     var homeForm = this.state.onHome ? <HomeContainer /> : <div />
 
-    var preferencesForm = this.props.requests.requestPreferences ? 
-    <div>
-        <Redirect to= "/preferences" 
-         from = "/listings"/> 
-    </div>
-    
-    : <div />
+    var preferencesForm = this.props.requests.requestPreferences ? (
+      <div>
+        <Redirect to="/preferences" from="/listings" />
+      </div>
+    ) : (
+      <div />
+    )
 
-    var listingsTable = this.props.requests.requestListings || this.props.requests.visited ? (
+    var listingsTable = this.props.requests.requestListings ? (
       <Redirect to="/listings" />
     ) : (
       <div />
@@ -67,8 +67,11 @@ class HomePage extends Component {
             <SideBar
               handleHome={e => this.handleDrawerItemClick(e, 'Home')}
               handleListings={e =>
-                this.handleDrawerItemClick(e, 'ShowListings')}
-              handlePreferences ={e => this.handleDrawerItemClick(e, 'ShowPreferences')}
+                this.handleDrawerItemClick(e, 'ShowListings')
+              }
+              handlePreferences={e =>
+                this.handleDrawerItemClick(e, 'ShowPreferences')
+              }
             />
             <Box>
               <div>

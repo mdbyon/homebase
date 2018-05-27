@@ -8,10 +8,10 @@ import ListingsContainer from './containers/ListingsContainer'
 import PreferencesPage from './PreferencesPage'
 import configureStore from './store'
 import ListingsPage from './ListingsPage'
-import PreferencesPageContainer from './containers/pages/PreferencesPageContainer';
+import PreferencesPageContainer from './containers/pages/PreferencesPageContainer'
 import PreferencesContainer from './containers/PreferencesContainer'
-import ListingsPageContainer from './containers/pages/ListingsPageContainer';
-import HomePageContainer from './containers/pages/HomePageContainer';
+import ListingsPageContainer from './containers/pages/ListingsPageContainer'
+import HomePageContainer from './containers/pages/HomePageContainer'
 
 const store = configureStore()
 
@@ -24,7 +24,7 @@ const Main = () => (
             <Route exact path="/" component={RegisterPage} />
             <Route path="/home" component={HomePageContainer} />
             <Route path="/listings" component={ListingsPageContainer} />
-            <Route path = "/preferences" component ={PreferencesPageContainer} />
+            <Route path="/preferences" component={PreferencesPageContainer} />
           </div>
         </Router>
       </Provider>
