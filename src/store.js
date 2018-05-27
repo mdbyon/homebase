@@ -23,8 +23,7 @@ export function configureStore() {
     ],
     listingsForm: [],
     requests: {
-      requestPreferences: false,
-      requestListings: false
+
     }
   }
 

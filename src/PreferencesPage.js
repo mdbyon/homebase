@@ -37,19 +37,24 @@ class PreferencesPage extends Component {
   handleDrawerItemClick = (e, item) => {
 
     if (item === 'Home') {
+      this.props.requestHome();
     
     }
     if (item == 'ShowListings') {
         this.props.requestListings();
     }
+    if (item == 'ShowPreferences') {
+      this.setState({showPreferences: true});
+
   }
+}
 
   
 
   render() {
-    var homeForm = this.state.onHome ? <Redirect to = '/home' /> : <div />
+    var homeForm = this.props.requests.requestHome ? <Redirect to = '/home' /> : <div />
 
-    var preferencesForm = this.props.requests.requestPreferences ? <PreferencesContainer /> : <div />
+    var preferencesForm = this.state.showPreferences ? <PreferencesContainer /> : <div />
 
     var listingsTable = this.props.requests.requestListings ? (
       <div>

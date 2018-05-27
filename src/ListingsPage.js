@@ -15,26 +15,24 @@ class ListingsPage extends Component {
     super(props)
     this.state = {
       open: true,
-      onHome: false,
       showListings: true,
-      ShowPreferences: false,
     }
   }
 
   handleDrawerItemClick = (e, item) => {
     if (item === 'Home') {
+      this.props.requestHome();
     }
     if (item === 'ShowListings') {
         this.setState({showListings: true});
     }
     if (item == 'ShowPreferences') {
         this.props.requestPreferences();
-        this.setState({ShowPreferences: true});
     }
   }
 
   render() {
-    var homeForm = this.state.onHome ? <Redirect to="/home" /> : <div />
+    var homeForm = this.props.requests.requestHome ? <Redirect to="/home" /> : <div />
 
     var preferencesForm = this.props.requests.requestPreferences ? 
         <div>

@@ -26,44 +26,35 @@ class HomePage extends Component {
     this.state = {
       open: true,
       onHome: false,
-      onSettings: false,
-      onServiceHistory: false,
-      showProfileForm: false,
-      showListings: false,
-      showPreferences: false
     }
   }
 
   handleDrawerItemClick = (e, item) => {
     if (item === 'ShowPreferences') {
-      this.setState({
-        showPreferences: true,
-        onHome: false,
-        showListings: false,
-      })
+        this.props.requestPreferences();
     }
     if (item === 'Home') {
       this.setState({
         onHome: true,
-        showListings: false,
-        showPreferences: false,
       })
     }
     if (item === 'ShowListings') {
-      this.setState({
-        showListings: true,
-        onHome: false,
-        showPreferences: false,
-      })
+        this.props.requestListings();
     }
   }
 
   render() {
     var homeForm = this.state.onHome ? <HomeContainer /> : <div />
 
-    var preferencesForm = this.state.showPreferences ? <Redirect to = '/preferences' /> : <div />
+    var preferencesForm = this.props.requests.requestPreferences ? 
+    <div>
+        <Redirect to= "/preferences" 
+         from = "/listings"/> 
+    </div>
+    
+    : <div />
 
-    var listingsTable = this.state.showListings ? (
+    var listingsTable = this.props.requests.requestListings || this.props.requests.visited ? (
       <Redirect to="/listings" />
     ) : (
       <div />

@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-      homeListings: state.listingsForm,
+      listings: state.listingsForm,
       requests: state.requests,
     }
   }

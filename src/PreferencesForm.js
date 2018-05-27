@@ -137,8 +137,8 @@ class PreferencesForm extends Component {
             <Button label="Submit" type="submit" primary={true} />
           </Footer>
         </Form>
-        {this.props.requests.visited ? (<div /> ) : (
-            this.props.requests.makeRequest ? (
+        
+           { this.props.requests.makeRequest ? (
             this.props.requests.didLoad ? (
                 <div>   
                         <Redirect to="/listings"
@@ -150,9 +150,9 @@ class PreferencesForm extends Component {
             )
         ) : (
           <div />
-        )
         )}
-    
+        
+
       </div>
     )
   }

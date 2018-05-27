@@ -4,7 +4,7 @@ const requestsReducer = (state = {}, action) => {
       return {
         ...state,
         makeRequest: true,
-
+        didLoad: false
       }
 
     case 'RECEIVED_GOOGLE_PLACES':
