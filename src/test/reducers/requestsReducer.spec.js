@@ -12,7 +12,7 @@ describe('Listings Reducer', () => {
     })
     it('should return the proper loading case for Google API call', () => {
         expect(reducer({}, {type: 'REQUEST_GOOGLE_PLACES'})).toEqual({
-            didLoad: false,
+            didLoad: false, makeRequest: true 
         })
         expect(reducer({}, {type: 'RECEIVED_GOOGLE_PLACES'})).toEqual({
             didLoad: true

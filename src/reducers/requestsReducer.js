@@ -16,6 +16,7 @@ const requestsReducer = (state = {}, action) => {
     case 'REQUEST_REDIRECT_TO_LISTINGS':
       return {
         redirect: true,
+        completedPreferences: true,
       }
     case 'REQUEST_HOME':
       return {

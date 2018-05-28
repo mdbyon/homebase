@@ -47,11 +47,10 @@ class PreferencesPage extends Component {
   }
 
   render() {
-    var homeForm = this.props.requests.requestHome ? (
+    var homeForm = this.props.requests.completed ? this.props.requests.requestHome ? (
       <Redirect to="/home" />
     ) : (
-      <div />
-    )
+    <div /> ) : ( <div /> )
 
     var preferencesForm = this.state.showPreferences ? (
       <PreferencesContainer />

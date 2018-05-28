@@ -12,14 +12,12 @@ import ListingsContainer from './containers/ListingsContainer'
 import HomeContainer from './containers/HomeContainer'
 import { SideBar } from './SideBar'
 import { Redirect } from 'react-router'
+import {PieChart} from './PieChart'
 
 import './styles/form.css'
 
 class HomePage extends Component {
-  static defaultProps = {
-    color: '#1A237E',
-    theme: 'dark',
-  }
+
 
   constructor(props) {
     super(props)
@@ -53,6 +51,19 @@ class HomePage extends Component {
     ) : (
       <div />
     )
+    var redirect = this.props.requests.completedPreferences ? (
+    <div /> ) : (
+        <div>
+          <Redirect className ='toPreferences' to = '/preferences' />
+        </div>
+
+    )
+
+    var pieChart = this.props.points > 0 ? (
+      <div>
+        <PieChart points = {this.props.points} />
+      </div>
+    ) : <div/>
 
     var listingsTable = this.props.requests.requestListings ? (
       <Redirect to="/listings" />
@@ -61,7 +72,7 @@ class HomePage extends Component {
     )
 
     return (
-      <div>
+      <div className ='homeContainer'>
         <App centered={false}>
           <Split flex="right" priority="right">
             <SideBar
@@ -78,6 +89,8 @@ class HomePage extends Component {
                 {listingsTable}
                 {homeForm}
                 {preferencesForm}
+                {pieChart}
+                {redirect}
               </div>
             </Box>
           </Split>
