@@ -13,7 +13,9 @@ describe('Home Page with no data' ,() =>{
 
     beforeEach(() => {
         props = {
-            points : 0,
+            profile:{
+                points : 0,
+            },
 
             requests:{
                 completedPreferences: false,
@@ -42,7 +44,9 @@ describe('Home Page with data' , () =>{
 
     beforeEach(() => {
         props = {
-            points : 100,
+            profile:{
+                points : 100,
+            },
 
             requests:{
                 completedPreferences: true,
@@ -56,7 +60,7 @@ describe('Home Page with data' , () =>{
     })
 
     it('should pass a prop to the pie chart on users point total', ()=>{
-        expect(wrapper.find('PieChart').props().points).to.equal(props.points);
+        expect(wrapper.find('PieChart').props().profile.points).to.equal(props.profile.points);
     })
     it('does not redirect' ,() => {
         expect(wrapper.find('Redirect.toPreferences').length).to.equal(0);

@@ -1,7 +1,7 @@
-export const addUser = user => {
+export const addPoints = points => {
   return {
-    type: 'ADD_USER',
-    payload: user,
+    type: 'ADD_POINTS',
+    payload: points,
   }
 }
 

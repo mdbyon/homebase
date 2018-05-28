@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import profileReducer from './profileFormReducer'
+import profileReducer from './profileReducer'
 import listingsReducer from './listingsReducer'
 import requestsReducer from './requestsReducer'
 
 const communityServiceAppReducer = combineReducers({
-  profileForm: profileReducer,
+  profile: profileReducer,
   listingsForm: listingsReducer,
   requests: requestsReducer,
 })

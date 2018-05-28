@@ -59,9 +59,9 @@ class HomePage extends Component {
 
     )
 
-    var pieChart = this.props.points > 0 ? (
+    var pieChart = this.props.profile.points > 0 ? (
       <div>
-        <PieChart points = {this.props.points} />
+        <PieChart points = {this.props.profile.points} />
       </div>
     ) : <div/>
 

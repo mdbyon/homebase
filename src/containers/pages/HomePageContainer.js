@@ -19,6 +19,7 @@ const mapStateToProps = state => {
     return {
       listings: state.listingsForm,
       requests: state.requests,
+      profile: state.profile
     }
   }
 
