@@ -11,11 +11,18 @@ describe('Pie Chart', ()=>{
     let props
     beforeEach(()=>{
         props = {
-            
+            points:{
+                hospitals: 20,
+                schools: 80
+            }
         }
         wrapper = shallow(<PieChart />)
     })
+
     it('always renders a div', ()=>{
-        exp
+        expect(wrapper.find('div.wrapper').length).to.equal(1);
+    })
+    it('passes prop for points in each category to grommet Component', ()=>{
+        expect(wrapper.find('AnnotatedMeter').props().points).to.equal(props.points);
     })
 })

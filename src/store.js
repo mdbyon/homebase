@@ -23,9 +23,13 @@ export function configureStore() {
     ],
     listingsForm: [],
     requests: {},
-    profile:{
-      points: 50
-    }
+    profile: {
+      points: {
+          churches: 30,
+          hospitals: 20,
+          schools: 60
+        }   
+    },
   }
 
   const store = createStore(

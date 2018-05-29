@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "carbon-components": "^8.21.0",
+    "change-case": "^3.0.2",
     "city-to-coords": "^1.1.0",
     "cors": "^2.8.4",
     "eslint-config-airbnb": "^16.1.0",

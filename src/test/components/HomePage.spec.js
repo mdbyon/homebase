@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import {shallow} from 'enzyme';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,6 +11,7 @@ configure({ adapter: new Adapter() });
 describe('Home Page with no data' ,() =>{
     let wrapper;
     let props;
+    var spy = sinon.spy();
 
     beforeEach(() => {
         props = {
@@ -18,6 +20,8 @@ describe('Home Page with no data' ,() =>{
             },
 
             requests:{
+
+                requestPreferences: spy,
                 completedPreferences: false,
             }
         }
@@ -33,7 +37,7 @@ describe('Home Page with no data' ,() =>{
     })
 
     it('if no preferences prop, then redirect to preferences page' ,() => {
-        expect(wrapper.find('Redirect').length).to.equal(1);
+        expect(wrapper.find('Redirect.toPreferences').length).to.equal(1);
     })
 
 })
@@ -60,7 +64,7 @@ describe('Home Page with data' , () =>{
     })
 
     it('should pass a prop to the pie chart on users point total', ()=>{
-        expect(wrapper.find('PieChart').props().profile.points).to.equal(props.profile.points);
+        expect(wrapper.find('PieChart').props().profile).to.equal(props.profile);
     })
     it('does not redirect' ,() => {
         expect(wrapper.find('Redirect.toPreferences').length).to.equal(0);

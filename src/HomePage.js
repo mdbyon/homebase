@@ -12,13 +12,11 @@ import ListingsContainer from './containers/ListingsContainer'
 import HomeContainer from './containers/HomeContainer'
 import { SideBar } from './SideBar'
 import { Redirect } from 'react-router'
-import {PieChart} from './PieChart'
+import { PieChart } from './PieChart'
 
 import './styles/form.css'
 
 class HomePage extends Component {
-
-
   constructor(props) {
     super(props)
     this.state = {
@@ -52,18 +50,21 @@ class HomePage extends Component {
       <div />
     )
     var redirect = this.props.requests.completedPreferences ? (
-    <div /> ) : (
-        <div>
-          <Redirect className ='toPreferences' to = '/preferences' />
-        </div>
-
+      <div />
+    ) : (
+      <div>
+        <Redirect className="toPreferences" to="/preferences" />
+      </div>
     )
 
-    var pieChart = this.props.profile.points > 0 ? (
-      <div>
-        <PieChart points = {this.props.profile.points} />
-      </div>
-    ) : <div/>
+    var pieChart =
+      this.props.profile.points ? (
+        <div>
+          <PieChart profile={this.props.profile} />
+        </div>
+      ) : (
+        <div />
+      )
 
     var listingsTable = this.props.requests.requestListings ? (
       <Redirect to="/listings" />
@@ -72,7 +73,7 @@ class HomePage extends Component {
     )
 
     return (
-      <div className ='homeContainer'>
+      <div className="homeContainer">
         <App centered={false}>
           <Split flex="right" priority="right">
             <SideBar
