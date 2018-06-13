@@ -1,31 +1,38 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Tabs from 'grommet/components/Tabs'
-import Tab from 'grommet/components/Tab'
-import Table from 'grommet/components/Table'
-import TableRow from 'grommet/components/TableRow'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Tabs from "grommet/components/Tabs";
+import Tab from "grommet/components/Tab";
+import Table from "grommet/components/Table";
+import TableRow from "grommet/components/TableRow";
+import ListingsModalPage from "./ListingsModalPage";
+import ListingsContainer from "./containers/ListingsContainer";
 
 class ListingsTable extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      selectedIndex: 0,
-    }
+      selectedIndex: 0
+    };
   }
 
   handleChange(value) {
     this.setState({
-      sel: value,
-    })
+      sel: value
+    });
   }
 
+  handleRowClick = listing => {
+    console.log(listing);
+    return <ListingsModalPage listing={listing} />;
+  };
+
   render() {
-    console.log(this.props.listings)
-    console.log(Object.keys(this.props.listings))
+    console.log(this.props.listings);
+    console.log(Object.keys(this.props.listings));
     if (this.props.listings != null) {
-      var listings = Object.keys(this.props.listings).map((listing, index) => {
+      var listings = Object.keys(this.props.listings).map((category, index) => {
         return (
-          <Tab className="listingTab" title={listing}>
+          <Tab className={`listing-tab-${category}`} title={category}>
             <Table className="table">
               <thead>
                 <tr>
@@ -35,23 +42,28 @@ class ListingsTable extends Component {
               </thead>
             </Table>
 
-            {this.props.listings[listing].map((desc, index) => {
+            {this.props.listings[category].map((listing, index) => {
               return (
                 <div>
-                  <Table className={listing} scrollable={true}>
+                  <Table className={category} scrollable={true}>
                     <tbody>
-                      <TableRow>
+                      <TableRow
+                        className={`table-row-${index}`}
+                        onClick={() => {
+                          this.handleRowClick(listing);
+                        }}
+                      >
                         <td> {index} </td>
-                        <td> {desc.name} </td>
+                        <td> {listing.name} </td>
                       </TableRow>
                     </tbody>
                   </Table>
                 </div>
-              )
+              );
             })}
           </Tab>
-        )
-      })
+        );
+      });
     }
 
     return (
@@ -62,8 +74,8 @@ class ListingsTable extends Component {
       >
         {listings}
       </Tabs>
-    )
+    );
   }
 }
 
-export default ListingsTable
+export default ListingsTable;

@@ -1,41 +1,48 @@
 const listingsReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'LIST_hospital':
+    case "LIST_hospital":
       return {
         ...state,
 
-        hospitals: action.payload,
-      }
+        hospitals: action.payload
+      };
 
-    case 'LIST_school':
+    case "LIST_school":
       return {
         ...state,
 
-        schools: action.payload,
-      }
+        schools: action.payload
+      };
 
-    case 'LIST_church':
+    case "LIST_church":
       return {
         ...state,
 
-        churches: action.payload,
-      }
+        churches: action.payload
+      };
 
-    case 'LIST_library':
+    case "LIST_library":
       return {
         ...state,
 
-        libraries: action.payload,
-      }
+        libraries: action.payload
+      };
 
-    case 'DELETE_USER':
+    case "REQUEST_PHOTOS":
+      return {
+        ...state,
+
+        photos: action.payload
+      };
+
+    case "DELETE_USER":
       const updatedUsers = state.users.filter(
         user => user.payload !== action.payload
-      )
-      return { updatedUsers }
+      );
+      return { updatedUsers };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default listingsReducer
+export default listingsReducer;
