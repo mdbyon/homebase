@@ -21,7 +21,10 @@ describe("Listing modal page", () => {
       requests: {
         requestDetails: () => requestDetailsSpy
       },
-      photos: "nice.png"
+      listings: {
+        photos: ["nice.png"]
+      },
+      getPhotos: () => {}
     };
     wrapper = shallow(<ListingsModalPage {...props} />);
   });

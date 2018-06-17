@@ -32,7 +32,9 @@ const listingsReducer = (state = {}, action) => {
       return {
         ...state,
 
-        photos: action.payload
+        ...state.photos,
+
+        photos: [action.payload]
       };
 
     case "DELETE_USER":

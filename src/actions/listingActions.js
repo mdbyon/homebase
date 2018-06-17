@@ -38,20 +38,37 @@ export function search(criteria, radius, location) {
   };
 }
 
-export const searchPhotos = listing => {
-  return axios
-    .get(
-      `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
-        listing.photos.photo_reference
-      }&key=${GOOGLE_PLACES_API_KEY}`
-    )
-    .then(response => {
-      console.log(response);
-      return {
-        type: "REQUEST_PHOTOS",
-        payload: response.data
-      };
+export function searchPhotos(listing) {
+  return dispatch => {
+    listing.photos.map(photo => {
+      return axios
+        .get(
+          `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
+            photo.photo_reference
+          }&key=${GOOGLE_PLACES_API_KEY}`
+        )
+        .then(response => {
+          dispatch(loadPhoto(response));
+        })
+        .catch(ex => {
+          dispatch(loadPhotosFailure(ex));
+        });
     });
+  };
+}
+
+export const loadPhoto = photo => {
+  return {
+    type: "REQUEST_PHOTOS",
+    payload: photo
+  };
+};
+
+export const loadPhotosFailure = ex => {
+  return {
+    type: "LOAD_PHOTOS_FAILURE",
+    payload: ex
+  };
 };
 
 export const requestGooglePlaces = () => {
@@ -92,6 +109,18 @@ export const requestPreferences = () => {
 export const requestListings = () => {
   return {
     type: "REQUEST_LISTINGS"
+  };
+};
+
+export const requestOpenModal = () => {
+  return {
+    type: "REQUEST_OPEN_MODAL"
+  };
+};
+
+export const requestCloseModal = () => {
+  return {
+    type: "REQUEST_CLOSE_MODAL"
   };
 };
 

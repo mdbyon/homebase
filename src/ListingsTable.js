@@ -4,14 +4,16 @@ import Tabs from "grommet/components/Tabs";
 import Tab from "grommet/components/Tab";
 import Table from "grommet/components/Table";
 import TableRow from "grommet/components/TableRow";
-import ListingsModalPage from "./ListingsModalPage";
+import ListingsModalPageContainer from "./containers/pages/ListingsModalPageContainer";
 import ListingsContainer from "./containers/ListingsContainer";
 
 class ListingsTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndex: 0
+      selectedIndex: 0,
+      openModal: false,
+      currentListing: {}
     };
   }
 
@@ -22,8 +24,8 @@ class ListingsTable extends Component {
   }
 
   handleRowClick = listing => {
-    console.log(listing);
-    return <ListingsModalPage listing={listing} />;
+    this.props.requestOpenModal();
+    this.setState({ currentListing: listing });
   };
 
   render() {
@@ -41,11 +43,15 @@ class ListingsTable extends Component {
                 </tr>
               </thead>
             </Table>
-
             {this.props.listings[category].map((listing, index) => {
               return (
                 <div>
-                  <Table className={category} scrollable={true}>
+                  <Table
+                    responsive={true}
+                    selectable={true}
+                    className={category}
+                    scrollable={true}
+                  >
                     <tbody>
                       <TableRow
                         className={`table-row-${index}`}
@@ -73,6 +79,11 @@ class ListingsTable extends Component {
         onActive={e => this.setState({ selectedIndex: e })}
       >
         {listings}
+        {this.props.requests.openModal ? (
+          <ListingsModalPageContainer listing={this.state.currentListing} />
+        ) : (
+          <div />
+        )}
       </Tabs>
     );
   }

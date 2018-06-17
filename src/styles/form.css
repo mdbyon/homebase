@@ -1,107 +1,105 @@
-#nameEntry{
-    position: relative;
-    top: 50px;
-    left: 50px;
+#nameEntry {
+  position: relative;
+  top: 50px;
+  left: 50px;
 }
 
-#emailEntry{
-    position: relative;
-    top: 50px;
-    left: 50px;
+#emailEntry {
+  position: relative;
+  top: 50px;
+  left: 50px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-.textfield{
-    margin: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.listingTab{
-    left: 20%;
+.textfield {
+  margin: 10px;
 }
 
-.loginForm{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.listingTab {
+  left: 20%;
 }
 
-.homeForm{
-    position: absolute;
-    top: 100px;
-    left: 200px;
-
+.loginForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#submit{
-    position: relative;
-    top: 150px;
-    left: 270px;
+.homeForm {
+  position: absolute;
+  top: 100px;
+  left: 200px;
 }
 
-#login{
-    position: relative;
-    top: 178px;
-    left: 277px;
-
+#submit {
+  position: relative;
+  top: 150px;
+  left: 270px;
 }
 
-
-
-#display{
-    position: relative;
-    top: 33px;
-    left: 313px;
-    height: 999px;
+#login {
+  position: relative;
+  top: 178px;
+  left: 277px;
 }
 
-.sidebar{
-   position: absolute;
-   left: 0px;
+#display {
+  position: relative;
+  top: 33px;
+  left: 313px;
+  height: 999px;
 }
 
-.formEntry{
-    padding: 10px;
+.sidebar {
+  position: absolute;
+  left: 0px;
 }
 
-.testForm{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.formEntry {
+  padding: 10px;
 }
 
-.fieldEntry{
-    padding-top: 10px;
+.testForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.radioButton{
-    padding-top: 10px;
+.fieldEntry {
+  padding-top: 10px;
+}
+
+.radioButton {
+  padding-top: 10px;
 }
 
 .checkBox {
-    padding-top: 7px;
-    padding-bottom: 16px;
+  padding-top: 7px;
+  padding-bottom: 16px;
 }
 
-
-.spinner{
-    position: absolute;
-    top: 50%;
-    left: 350px;
-
+.modal {
+  background: rgba(240, 248, 255, 0.18);
 }
 
-.comments{
-    padding-top:15px;
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 350px;
+}
+
+.comments {
+  padding-top: 15px;
 }
 
 .profileButton {
-    margin-left: 91px;
-    margin-top: 31px;
+  margin-left: 91px;
+  margin-top: 31px;
 }
