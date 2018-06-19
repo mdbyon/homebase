@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Tabs from "grommet/components/Tabs";
 import Tab from "grommet/components/Tab";
 import Table from "grommet/components/Table";
@@ -54,7 +53,7 @@ class ListingsTable extends Component {
                   >
                     <tbody>
                       <TableRow
-                        className={`table-row-${index}`}
+                        id={`table-row-${category}-${index}`}
                         onClick={() => {
                           this.handleRowClick(listing);
                         }}

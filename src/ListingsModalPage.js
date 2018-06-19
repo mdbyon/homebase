@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
-import { withStyles } from "@material-ui/core/styles";
-import Layer from "grommet/components/Layer";
-import Article from "grommet/components/Article";
 import Modal from "@material-ui/core/Modal";
-import Section from "grommet/components/Section";
-
-import Heading from "grommet/components/Heading";
 
 export default class ListingsModalPage extends Component {
   constructor(props) {
